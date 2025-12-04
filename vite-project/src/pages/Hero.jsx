@@ -1,10 +1,49 @@
 import React from 'react';
 
 function Hero() {
+  // ✅ Send data directly to CRM
+  const sendToCRM = async (payload) => {
+    const CRM_URL = 'https://connector.b2bbricks.com/api/Integration/hook/9f622a16-2560-4903-9729-b2c18dc5405a';
+
+    try {
+      const response = await fetch(CRM_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (response.ok) {
+        console.log('✅ Form data sent successfully to CRM');
+        // Optional: alert('Thank you! Your request has been submitted.');
+      } else {
+        console.error('❌ CRM rejected the data:', await response.text());
+      }
+    } catch (error) {
+      console.error('⚠️ Failed to send data to CRM:', error);
+    }
+  };
+
+  // ✅ Unified form submission handler
   const handleSubmit = (event, formName) => {
     event.preventDefault();
-    // Add your form submission logic here if needed
-    console.log(`${formName} form submitted`);
+
+    const form = event.target;
+    const formData = new FormData(form);
+
+    // Build payload
+    const payload = {
+      name: (formData.get('name') || '').toString().trim(),
+      mobile: (formData.get('mobile') || '').toString().trim(),
+      form_name: formName,
+      iso_code: formData.get('iso_code') || '',
+      mobileExt: formData.get('mobileExt') || '',
+      website_url: typeof window !== 'undefined' ? window.location.href : '',
+    };
+
+    // Submit to CRM
+    sendToCRM(payload);
   };
 
   return (
@@ -72,7 +111,7 @@ function Hero() {
                     <picture>
                       <source
                         media="(max-width: 750px)"
-                        srcSet=".https://lh3.googleusercontent.com/sitesv/AAzXCkeZxptCtZW8NrC8pPiaAcumsx0cYNqVC1vOhgvtf4Crv5IROfFURGIdes_1V6BM3D6cA388J6zv29fBKxSZM-M83yrHDjL00JQJNdZ7STeF9AO29x_v_WhLPR2lI4VPJxxyrCaIYuXcOHDdVKd5WgXLK-xjAwz1MAXz61bIo8tkPcKYGFUy69pRLFg=w1280"
+                        srcSet="https://lh3.googleusercontent.com/sitesv/AAzXCkeZxptCtZW8NrC8pPiaAcumsx0cYNqVC1vOhgvtf4Crv5IROfFURGIdes_1V6BM3D6cA388J6zv29fBKxSZM-M83yrHDjL00JQJNdZ7STeF9AO29x_v_WhLPR2lI4VPJxxyrCaIYuXcOHDdVKd5WgXLK-xjAwz1MAXz61bIo8tkPcKYGFUy69pRLFg=w1280"
                       />
                       <img
                         className="d-block w-100"
@@ -170,6 +209,7 @@ function Hero() {
             </div>
           </section>
 
+          {/* Mobile Form */}
           <div className="sec1 mob-form d-sm-block d-md-none d-lg-none">
             <div className="call-back-section text-center mb-3 pb-3 border-bottom">
               <h4 className="mb-0">Pre-Register here for Best Offers</h4>
@@ -178,9 +218,7 @@ function Hero() {
               <form
                 className="text-center"
                 name="Pre-Register"
-                method="post"
-                action="sendlead.php"
-                onSubmit={(e) => handleSubmit(e, 'Pre-Register')}
+                onSubmit={(e) => handleSubmit(e, 'Pre-Register Mobile')}
               >
                 <input type="hidden" name="iso_code" value="" />
                 <input type="hidden" name="mobileExt" value="" />
@@ -206,21 +244,12 @@ function Hero() {
                   />
                   <span className="error">Mobile field is required</span>
                 </div>
-                <div>
-                  <input
-                    type="hidden"
-                    name="form_name"
-                    id="form_name1"
-                    className="form-control form_name"
-                    value="Pre-Register Mobile"
-                  />
-                  <input
-                    type="hidden"
-                    id="website_url1"
-                    className="website_url"
-                    name="website_url"
-                  />
-                </div>
+                <input type="hidden" name="form_name" value="Pre-Register Mobile" />
+                <input
+                  type="hidden"
+                  name="website_url"
+                  value={typeof window !== 'undefined' ? window.location.href : ''}
+                />
                 <div
                   className="form-group acceptance mb-3"
                   style={{ fontSize: '10px' }}
@@ -778,8 +807,6 @@ function Hero() {
                         <form
                           className="text-center"
                           name="schedule-site"
-                          method="post"
-                          action="sendlead.php"
                           onSubmit={(e) => handleSubmit(e, 'Schedule Site Visit')}
                         >
                           <input type="hidden" name="iso_code" value="" />
@@ -1107,8 +1134,6 @@ function Hero() {
           <form
             className="text-center"
             name="Pre-Register-sidemodal"
-            action="sendlead.php"
-            method="post"
             onSubmit={(e) => handleSubmit(e, 'Pre-Register Sidemodal')}
           >
             <input type="hidden" name="iso_code" value="" />
@@ -1133,15 +1158,12 @@ function Hero() {
               />
               <span className="error">Mobile field is required</span>
             </div>
-            <div>
-              <input
-                type="hidden"
-                name="form_name"
-                className="form-control form_name"
-                value="Pre-Register"
-              />
-              <input type="hidden" className="website_url" name="website_url" />
-            </div>
+            <input type="hidden" name="form_name" value="Pre-Register Sidemodal" />
+            <input
+              type="hidden"
+              name="website_url"
+              value={typeof window !== 'undefined' ? window.location.href : ''}
+            />
             <div className="form-group acceptance mb-3" style={{ fontSize: '10px' }}>
               <label className="form-check-label text-start">
                 <input type="checkbox" defaultChecked className="form-check-input" />

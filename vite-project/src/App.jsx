@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Header from './components/header'
 import Hero from './pages/Hero'
+import EnquiryPopup from './components/EnquiryPopup'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -12,6 +13,7 @@ function App() {
     <>
       <Header/>   
       <Hero/>
+      {/* <EnquiryPopup/> */}
     </>
   )
 }
