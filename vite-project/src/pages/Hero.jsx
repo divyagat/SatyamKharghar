@@ -1,10 +1,33 @@
 import React from 'react';
 
 function Hero() {
-  const handleSubmit = (event, formName) => {
+  
+
+    const handleSubmit = async (event, formName) => {
     event.preventDefault();
-    // Add your form submission logic here if needed
-    console.log(`${formName} form submitted`);
+
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData.entries());
+    data.form_name = formName;
+    data.website_url = window.location.href;
+
+    console.log("📥 Form Submit:", data);
+
+    try {
+      const res = await fetch("http://localhost:5000/send-crm", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      const result = await res.json();
+      console.log("📤 CRM Response:", result);
+
+      alert("Form submitted successfully!");
+    } catch (err) {
+      console.error("❌ Error sending CRM:", err);
+      alert("Error submitting form");
+    }
   };
 
   return (
@@ -764,92 +787,81 @@ function Hero() {
           </section>
 
           {/* Contact section */}
-          <section id="contact">
+                 <section id="contact">
             <div className="container">
               <div className="contact-inner">
                 <div className="container contact-data">
                   <div className="row">
                     <div className="col-lx-6 col-lg-6 col-sm-12 image-carousel1 ps-0 pe-0">
-                      <img src="./public/Images/site_visit.webp" className="img-fluid" alt="Site Visit" />
+                      <img
+                        src="./public/Images/site_visit.webp"
+                        className="img-fluid"
+                        alt="Site Visit"
+                      />
                     </div>
+
+                    {/* LEFT FORM */}
                     <div className="col-lx-6 col-lg-6 col-sm-12 form-data">
                       <div className="form">
                         <h3 className="section-title">Schedule a Site Visit</h3>
+
                         <form
                           className="text-center"
                           name="schedule-site"
-                          method="post"
-                          action="sendlead.php"
-                          onSubmit={(e) => handleSubmit(e, 'Schedule Site Visit')}
+                          onSubmit={(e) =>
+                            handleSubmit(e, "Schedule Site Visit")
+                          }
                         >
                           <input type="hidden" name="iso_code" value="" />
                           <input type="hidden" name="mobileExt" value="" />
+
                           <div className="row">
-                            <div className="col-lg-12 col-sm-12 forms-input-fields">
-                              <i className="fa-solid fa-user"></i>
+                            <div className="col-lg-12 forms-input-fields">
                               <input
                                 type="text"
                                 name="name"
-                                className="form-control ms-0 me-0"
+                                className="form-control"
                                 required
                                 placeholder="Name*"
                               />
-                              <span className="error">Name field is required</span>
                             </div>
-                            <div className="col-lg-12 col-sm-12 forms-input-fields">
+
+                            <div className="col-lg-12 forms-input-fields">
                               <input
                                 type="tel"
                                 name="mobile"
-                                id="phone"
-                                className="form-control phone ms-0 me-0"
+                                className="form-control phone"
                                 required
                                 placeholder="Mobile*"
                               />
-                              <span className="error">Mobile field is required</span>
                             </div>
+
                             <div
                               className="form-group acceptance mb-2"
-                              style={{ fontSize: '10px', paddingBottom: '5px', marginTop: '10px' }}
+                              style={{ fontSize: "10px", marginTop: "10px" }}
                             >
                               <label className="form-check-label text-start">
-                                <input type="checkbox" defaultChecked className="form-check-input" />
+                                <input
+                                  type="checkbox"
+                                  defaultChecked
+                                  className="form-check-input"
+                                />
                                 <span className="text on-rera">
-                                  I Consent to The Processing of Provided Data According To{' '}
+                                  I Consent to data processing as per{" "}
                                   <a
                                     href="Privacy-Policy.html"
-                                    style={{ color: '#007bff' }}
+                                    style={{ color: "#007bff" }}
                                     target="_blank"
-                                    rel="noopener noreferrer"
                                   >
-                                    Privacy Policy | Terms & Conditions
-                                  </a>
-                                  , I Authorize Globe Pride Realty and its representatives to Call, SMS, Email or
-                                  WhatsApp Me About Its Products and Offers. I acknowledge that the project I am enquiring about has not yet
-                                  received RERA clearance. This Consent Overrides Any Registration For DNC/NDNC.
-                                </span>
-                                <span className="text non-rera">
-                                  Please be informed that this website is not intended to facilitate any sales
-                                  transactions. I understand and acknowledge that the project I am interested in hasn't yet
-                                  secured RERA clearance. The primary purpose of this website is to generate interest and gather information.
-                                  By providing my data, I consent to its use in accordance with the
-                                  <a
-                                    href="Privacy-Policy.html"
-                                    style={{ color: '#007bff' }}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                  >
-                                    {' '}
-                                    Privacy Policy | Terms & Conditions
+                                    Privacy Policy | Terms
                                   </a>
                                 </span>
                               </label>
                             </div>
+
                             <button
-                              style={{ width: 'auto' }}
                               type="submit"
-                              name="submit"
-                              className="btn ms-2 custom-btn btn-hover text-white data-id-btn"
-                              data-id="Contact Site Visit"
+                              className="btn custom-btn text-white"
                             >
                               <span className="enquireNowBtn">Submit</span>
                             </button>
@@ -857,14 +869,19 @@ function Hero() {
                         </form>
                       </div>
                     </div>
-                    <div className="col-lx-6 col-lg-6 col-sm-12 ps-0 pe-0 image-carousel m-0">
-                      <img src="./public/Images/site_visit.webp" className="img-fluid" alt="Site Visit" />
+
+                    <div className="col-lx-6 col-lg-6 col-sm-12 ps-0 pe-0 image-carousel">
+                      <img
+                        src="./public/Images/site_visit.webp"
+                        className="img-fluid"
+                        alt="Site Visit"
+                      />
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </section>
+          </section> */}
 
           {/* About Developer */}
           <section className="sec1" id="overview">
@@ -1083,46 +1100,51 @@ function Hero() {
       </main>
 
       {/* Desktop Summary */}
+      {/*       {/* RIGHT SIDE FORM */}
       <section className="desktop-summary">
         <div className="og-block d-flex justify-content-between">
-          <button
-            className="btn data-id-btn"
-            data-bs-target="#enquire-modal"
-            data-bs-toggle="modal"
-            data-bs-whatever="Enquire Now"
-            data-id="Site Visit"
-          >
-            <img src="./public/Images/Calendar.gif" className="img-fluid icon_sz me-1" alt="Calendar" />
+          <button className="btn data-id-btn">
+            <img
+              src="./public/Images/Calendar.gif"
+              className="img-fluid icon_sz"
+              alt="Calendar"
+            />
             Schedule Visit
           </button>
+
           <button className="btn on-rera">
-            <img src="./public/Images/callus.gif" className="img-fluid icon_sz me-1" alt="Call" />
-            <a href="tel:+918169449052" style={{ color: '#ffff', textDecoration: 'none' }}>
-              +918169449052
+            <img
+              src="./public/Images/callus.gif"
+              className="img-fluid icon_sz"
+              alt="Call"
+            />
+            <a href="tel:+918169449052" style={{ color: "#fff" }}>
+              +91 8169449052
             </a>
           </button>
         </div>
+
         <div className="form-section p-3">
           <h2 className="pb-2">Pre-Register here for Best Offers</h2>
+
           <form
             className="text-center"
             name="Pre-Register-sidemodal"
-            action="sendlead.php"
-            method="post"
-            onSubmit={(e) => handleSubmit(e, 'Pre-Register Sidemodal')}
+            onSubmit={(e) => handleSubmit(e, "Pre-Register")}
           >
             <input type="hidden" name="iso_code" value="" />
             <input type="hidden" name="mobileExt" value="" />
+
             <div className="form-group mb-3">
               <input
                 type="text"
                 className="form-control"
-                placeholder="Enter Your Name here..."
+                placeholder="Enter Your Name"
                 name="name"
                 required
               />
-              <span className="error">Name field is required</span>
             </div>
+
             <div className="form-group mb-3">
               <input
                 type="number"
@@ -1131,119 +1153,26 @@ function Hero() {
                 placeholder="Phone Number"
                 name="mobile"
               />
-              <span className="error">Mobile field is required</span>
             </div>
-            <div>
-              <input
-                type="hidden"
-                name="form_name"
-                className="form-control form_name"
-                value="Pre-Register"
-              />
-              <input type="hidden" className="website_url" name="website_url" />
-            </div>
-            <div className="form-group acceptance mb-3" style={{ fontSize: '10px' }}>
-              <label className="form-check-label text-start">
-                <input type="checkbox" defaultChecked className="form-check-input" />
-                <span className="text on-rera">
-                  I Consent to The Processing of Provided Data According To{' '}
-                  <a
-                    href="Privacy-Policy.html"
-                    style={{ color: '#007bff' }}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Privacy Policy | Terms & Conditions
-                  </a>
-                  , I Authorize Globe Pride Realty and its representatives to Call, SMS, Email or WhatsApp Me
-                  About Its Products and Offers. I acknowledge that the project I am enquiring about has not yet
-                  received RERA clearance. This Consent Overrides Any Registration For DNC/NDNC.
-                </span>
-                <span className="text non-rera">
-                  Please be informed that this website is not intended to facilitate any sales
-                  transactions. I understand and acknowledge that the project I am interested in hasn't yet
-                  secured RERA clearance. The primary purpose of this website is to generate interest and gather information.
-                  By providing my data, I consent to its use in accordance with the
-                  <a
-                    href="Privacy-Policy.html"
-                    style={{ color: '#007bff' }}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {' '}
-                    Privacy Policy | Terms & Conditions
-                  </a>
-                </span>
-              </label>
-            </div>
+
+            <input type="hidden" name="form_name" value="Pre-Register" />
+            <input type="hidden" name="website_url" />
+
             <button
               type="submit"
-              className="custom-btn btn btn-block mx-auto data-id-btn on-rera"
-              data-id="Pre-Register"
+              className="custom-btn btn data-id-btn on-rera"
             >
               <span className="enquireNowBtn">Pre-Register Now</span>
             </button>
-            <button
-              type="submit"
-              className="custom-btn btn btn-block mx-auto data-id-btn non-rera"
-              data-id="Pre-Register"
-            >
-              <span className="enquireNowBtn">Express Your Interest</span>
-            </button>
           </form>
-          <div className="enqModal mt-4">
-            <div className="row text-center justify-content-center icon-sec m-0">
-              <div className="col-4">
-                <img
-                  src="./public/Images/Instant%20Call%20Back.gif"
-                  width="42"
-                  className="img-fluid data-id-btn"
-                  alt="Callback"
-                />
-                <p className="mb-0">Instant Call Back</p>
-              </div>
-              <div className="col-4">
-                <img
-                  src="./public/Images/Free%20Site%20Visit.gif"
-                  width="42"
-                  className="img-fluid data-id-btn"
-                  style={{ scale: '1.5' }}
-                  alt="Site Visit"
-                />
-                <p className="mb-0">Free Site Visit</p>
-              </div>
-              <div className="col-4">
-                <img src="./public/Images/Best%20Price.gif" width="42" className="img-fluid" alt="Best Price" />
-                <p className="mb-0">Best Price</p>
-              </div>
-            </div>
-          </div>
         </div>
-        <div className="call-back-section text-center on-rera">
-          <button
-            className="custom-btn btn btn-block mx-auto data-id-btn"
-            data-bs-target="#enquire-modal"
-            data-bs-toggle="modal"
-            data-bs-whatever="Enquire Now"
-            data-id="Call Back"
-          >
-            <span className="enquireNowBtn">Request Call Back</span>
-          </button>
-        </div>
-        <div className="call-back-section text-center non-rera">
-          <button
-            className="custom-btn btn btn-block mx-auto callBackBtn data-id-btn"
-            data-bs-target="#enquire-modal"
-            data-bs-toggle="modal"
-            data-bs-whatever="Enquire Now"
-            data-id="Call Back"
-          >
-            <span className="enquireNowBtn">Express Your Interest</span>
-          </button>
-        </div>
-      </section>
+      </section> */}
     </div>
   );
 }
 
 export default Hero;
+
+
+
+
