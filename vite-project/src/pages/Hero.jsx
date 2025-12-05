@@ -1,7 +1,11 @@
 import React from 'react';
-
+import { useEffect } from "react";
 function Hero() {
-  
+   useEffect(() => {
+    if (window.$) {
+      $(".your-slider").slick();
+    }
+  }, []);
 
     const handleSubmit = async (event, formName) => {
     event.preventDefault();
