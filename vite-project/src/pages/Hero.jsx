@@ -1,5 +1,7 @@
 import React from 'react';
 import { useEffect } from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 function Hero() {
    useEffect(() => {
     if (window.$) {
@@ -77,7 +79,7 @@ function Hero() {
                       />
                       <img
                         className="d-block w-100"
-                        src="https://lh3.googleusercontent.com/sitesv/AAzXCkdf9rLF_uEsgbJBEjwxPdtDq1W1AP8nvDlRxJ5jf-f8dGjGibPwfK_Pof4T8OdEBHZH4t55s_E4x7wkR7xC-1kC7bL9jOBSEm0sLp8Hw_PupVjxmtm6GcXYsZG92hgxc3damfsZbTiF13xaWiy3fXwWtSY5kF-iyUOoyLNyvqLXDRqyl2Hjx4CllVM=w1280"
+                        src="https://lh3.googleusercontent.com/sitesv/AAzXCkeuOgmWeNQWjV0kiVbqHogaEYgpXVm4LgkPoYTUSJL0lYvuoMqmLYRziSasz9n2RG3FeSfHERVseZfI_b_0cZ_UAKPi9Skp1htM3U5xrwtOcpYsPAOFxy7DUFz0yKZlaXjFiB6g6QbCxhdhZlFa1ip613uyZuj38NvIORPPKWWOZ1Kcr3tGbEvEgZQ=w1280"
                         alt="Banner 1"
                       />
                     </picture>
@@ -86,11 +88,11 @@ function Hero() {
                     <picture>
                       <source
                         media="(max-width: 750px)"
-                        srcSet="https://lh3.googleusercontent.com/sitesv/AAzXCkeF1iWi363Q3A67v6_hKv_4-zKy2tRWPhonBi5iSaxrUcKPT5f0zVXq6U9XGovJRCqfUd3DVE0JBAmj6xG0n0mtkUGY2xWlWdmrrPzKrMjCygNj7jel0au9y7G7k86HuaD6Joy8HphkK57ZXQCXazTpA6q44_u6WARKs_C_CujsC7xNf-gIVQjhrQk=w1280"
+                        srcSet="https://lh3.googleusercontent.com/sitesv/AAzXCkcuL3NhrqT45MFwEV7TBcN6BxgFgtCS-Xmt4xFqHlxXh-fPCBruMWHS9fMqzZRMLKovKqgZtOO9sg3glcYs-H-ThHgWulhMd_C5swaPimYuyeubeAiv-Vcy-GYi8PiKJGzMFQbT6n-VuZfZYNo8X5gQQakQLsuxLRgk4KaVUM6i9Jm9nuqc77nffuE=w1280"
                       />
                       <img
                         className="d-block w-100"
-                        src="https://lh3.googleusercontent.com/sitesv/AAzXCkeF1iWi363Q3A67v6_hKv_4-zKy2tRWPhonBi5iSaxrUcKPT5f0zVXq6U9XGovJRCqfUd3DVE0JBAmj6xG0n0mtkUGY2xWlWdmrrPzKrMjCygNj7jel0au9y7G7k86HuaD6Joy8HphkK57ZXQCXazTpA6q44_u6WARKs_C_CujsC7xNf-gIVQjhrQk=w1280"
+                        src="https://lh3.googleusercontent.com/sitesv/AAzXCkcuL3NhrqT45MFwEV7TBcN6BxgFgtCS-Xmt4xFqHlxXh-fPCBruMWHS9fMqzZRMLKovKqgZtOO9sg3glcYs-H-ThHgWulhMd_C5swaPimYuyeubeAiv-Vcy-GYi8PiKJGzMFQbT6n-VuZfZYNo8X5gQQakQLsuxLRgk4KaVUM6i9Jm9nuqc77nffuE=w1280"
                         alt="Banner 2"
                       />
                     </picture>
@@ -103,7 +105,7 @@ function Hero() {
                       />
                       <img
                         className="d-block w-100"
-                        src="https://lh3.googleusercontent.com/sitesv/AAzXCkeZxptCtZW8NrC8pPiaAcumsx0cYNqVC1vOhgvtf4Crv5IROfFURGIdes_1V6BM3D6cA388J6zv29fBKxSZM-M83yrHDjL00JQJNdZ7STeF9AO29x_v_WhLPR2lI4VPJxxyrCaIYuXcOHDdVKd5WgXLK-xjAwz1MAXz61bIo8tkPcKYGFUy69pRLFg=w1280"
+                        src="https://lh3.googleusercontent.com/sitesv/AAzXCkdz0HvvCGwbGQHD_jOyGXRFZ7_OOlXZQ3hWWFeU9iSzM7eyDxT-Lw110O8g-rsc3L2DEOq-2sqcRVJb3YY_RSasecL7Uk77DLYzOBs1j2ij0GhpHhwkIF65kr_p4SJBehkmYiqk1KAbRFM92ZSyWNjOyg2B4A1p-NLOiTg2VrWBw10i8wu_--QTWhE=w1280"
                         alt="Banner 3"
                       />
                     </picture>
