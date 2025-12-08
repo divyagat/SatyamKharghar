@@ -222,8 +222,9 @@ input[type=number]::-webkit-outer-spin-button, input[type=number]::-webkit-inner
   left: 0;
   width: 100%;
   height: 100%;
-  background-image:conic-gradient(from 40deg at 50% 50%, rgba(255, 255, 255, 0) 50%, #a11173 100%);
-  animation: rotateAndScaleAnimation 3s linear infinite; 
+  background-color: #000;
+  /* background-image:conic-gradient(from 40deg at 50% 50%, rgba(255, 255, 255, 0) 50%, #a11173 100%);
+  animation: rotateAndScaleAnimation 3s linear infinite;  */
 }
 
 .enquireNowBtn {

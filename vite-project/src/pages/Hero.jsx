@@ -1,13 +1,17 @@
-import React from 'react';
+// import React from 'react';
+import React, { useRef } from "react";
+
 import { useEffect } from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 function Hero() {
-   useEffect(() => {
+  useEffect(() => {
     if (window.$) {
       $(".your-slider").slick();
     }
   }, []);
 
-    const handleSubmit = async (event, formName) => {
+  const handleSubmit = async (event, formName) => {
     event.preventDefault();
 
     const formData = new FormData(event.target);
@@ -33,6 +37,61 @@ function Hero() {
       alert("Error submitting form");
     }
   };
+
+
+
+  //  export default function AmenitiesCarousel() {
+  const amenities = [
+    { img: "KidsPlayArea.webp", label: "KIDS PLAY AREA" },
+    { img: "Parking.webp", label: "PARKING" },
+    { img: "Sitting Area (1).webp", label: "SITTING AREA" },
+    { img: "Out in the Nature (1).webp", label: "OUT IN THE NATURE" },
+    { img: "Pet Park.webp", label: "PET PARK" },
+    { img: "Swing set.webp", label: "SWING SET" },
+
+  ];
+
+
+  const carouselRef = useRef(null);
+
+  // Auto scroll
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (carouselRef.current) {
+        carouselRef.current.scrollBy({ left: 600, behavior: "smooth" });
+      }
+    }, 3000); // every 3 seconds
+    return () => clearInterval(interval);
+  }, []);
+
+  const scrollLeft = () => {
+    carouselRef.current.scrollBy({ left: -600, behavior: "smooth" });
+  };
+
+  const scrollRight = () => {
+    carouselRef.current.scrollBy({ left: 600, behavior: "smooth" });
+  };
+
+  const sectionStyle = { padding: "40px 20px", textAlign: "center" };
+  const titleStyle = { fontSize: "2rem", fontWeight: "bold", marginBottom: "30px" };
+  const carouselContainerStyle = { position: "relative" };
+  const carouselWrapperStyle = { display: "flex", overflowX: "auto", scrollBehavior: "smooth", gap: "20px", paddingBottom: "10px" };
+  const rowStyle = { display: "flex", gap: "20px" };
+  const cardStyle = { position: "relative", minWidth: "350px", height: "250px", flex: "0 0 auto", borderRadius: "10px", overflow: "hidden" };
+  const imgStyle = { width: "100%", height: "100%", objectFit: "cover", display: "block" };
+  const labelLeftStyle = { position: "absolute", bottom: "8px", left: "8px", background: "rgba(0,0,0,0.7)", color: "#fff", padding: "5px 10px", fontSize: "0.85rem", fontWeight: "bold", borderRadius: "4px" };
+  const labelRightStyle = { position: "absolute", bottom: "8px", right: "8px", background: "rgba(0,0,0,0.5)", color: "#fff", padding: "3px 6px", fontSize: "0.7rem", borderRadius: "4px" };
+  const arrowStyle = { fontSize: "2rem", cursor: "pointer", userSelect: "none", position: "absolute", top: "50%", transform: "translateY(-50%)", background: "rgba(0,0,0,0.3)", color: "#fff", borderRadius: "50%", width: "40px", height: "40px", display: "flex", justifyContent: "center", alignItems: "center", zIndex: 10 };
+  const leftArrowStyle = { ...arrowStyle, left: "0" };
+  const rightArrowStyle = { ...arrowStyle, right: "0" };
+
+  // Split amenities into rows of 3
+  const rows = [];
+  for (let i = 0; i < amenities.length; i += 3) {
+    rows.push(amenities.slice(i, i + 3));
+  }
+
+
 
   return (
     <div className="main-container d-flex">
@@ -77,7 +136,7 @@ function Hero() {
                       />
                       <img
                         className="d-block w-100"
-                        src="https://lh3.googleusercontent.com/sitesv/AAzXCkdf9rLF_uEsgbJBEjwxPdtDq1W1AP8nvDlRxJ5jf-f8dGjGibPwfK_Pof4T8OdEBHZH4t55s_E4x7wkR7xC-1kC7bL9jOBSEm0sLp8Hw_PupVjxmtm6GcXYsZG92hgxc3damfsZbTiF13xaWiy3fXwWtSY5kF-iyUOoyLNyvqLXDRqyl2Hjx4CllVM=w1280"
+                        src="https://lh3.googleusercontent.com/sitesv/AAzXCkeuOgmWeNQWjV0kiVbqHogaEYgpXVm4LgkPoYTUSJL0lYvuoMqmLYRziSasz9n2RG3FeSfHERVseZfI_b_0cZ_UAKPi9Skp1htM3U5xrwtOcpYsPAOFxy7DUFz0yKZlaXjFiB6g6QbCxhdhZlFa1ip613uyZuj38NvIORPPKWWOZ1Kcr3tGbEvEgZQ=w1280"
                         alt="Banner 1"
                       />
                     </picture>
@@ -86,11 +145,11 @@ function Hero() {
                     <picture>
                       <source
                         media="(max-width: 750px)"
-                        srcSet="https://lh3.googleusercontent.com/sitesv/AAzXCkeF1iWi363Q3A67v6_hKv_4-zKy2tRWPhonBi5iSaxrUcKPT5f0zVXq6U9XGovJRCqfUd3DVE0JBAmj6xG0n0mtkUGY2xWlWdmrrPzKrMjCygNj7jel0au9y7G7k86HuaD6Joy8HphkK57ZXQCXazTpA6q44_u6WARKs_C_CujsC7xNf-gIVQjhrQk=w1280"
+                        srcSet="https://lh3.googleusercontent.com/sitesv/AAzXCkcuL3NhrqT45MFwEV7TBcN6BxgFgtCS-Xmt4xFqHlxXh-fPCBruMWHS9fMqzZRMLKovKqgZtOO9sg3glcYs-H-ThHgWulhMd_C5swaPimYuyeubeAiv-Vcy-GYi8PiKJGzMFQbT6n-VuZfZYNo8X5gQQakQLsuxLRgk4KaVUM6i9Jm9nuqc77nffuE=w1280"
                       />
                       <img
                         className="d-block w-100"
-                        src="https://lh3.googleusercontent.com/sitesv/AAzXCkeF1iWi363Q3A67v6_hKv_4-zKy2tRWPhonBi5iSaxrUcKPT5f0zVXq6U9XGovJRCqfUd3DVE0JBAmj6xG0n0mtkUGY2xWlWdmrrPzKrMjCygNj7jel0au9y7G7k86HuaD6Joy8HphkK57ZXQCXazTpA6q44_u6WARKs_C_CujsC7xNf-gIVQjhrQk=w1280"
+                        src="https://lh3.googleusercontent.com/sitesv/AAzXCkcuL3NhrqT45MFwEV7TBcN6BxgFgtCS-Xmt4xFqHlxXh-fPCBruMWHS9fMqzZRMLKovKqgZtOO9sg3glcYs-H-ThHgWulhMd_C5swaPimYuyeubeAiv-Vcy-GYi8PiKJGzMFQbT6n-VuZfZYNo8X5gQQakQLsuxLRgk4KaVUM6i9Jm9nuqc77nffuE=w1280"
                         alt="Banner 2"
                       />
                     </picture>
@@ -103,7 +162,7 @@ function Hero() {
                       />
                       <img
                         className="d-block w-100"
-                        src="https://lh3.googleusercontent.com/sitesv/AAzXCkeZxptCtZW8NrC8pPiaAcumsx0cYNqVC1vOhgvtf4Crv5IROfFURGIdes_1V6BM3D6cA388J6zv29fBKxSZM-M83yrHDjL00JQJNdZ7STeF9AO29x_v_WhLPR2lI4VPJxxyrCaIYuXcOHDdVKd5WgXLK-xjAwz1MAXz61bIo8tkPcKYGFUy69pRLFg=w1280"
+                        src="https://lh3.googleusercontent.com/sitesv/AAzXCkdz0HvvCGwbGQHD_jOyGXRFZ7_OOlXZQ3hWWFeU9iSzM7eyDxT-Lw110O8g-rsc3L2DEOq-2sqcRVJb3YY_RSasecL7Uk77DLYzOBs1j2ij0GhpHhwkIF65kr_p4SJBehkmYiqk1KAbRFM92ZSyWNjOyg2B4A1p-NLOiTg2VrWBw10i8wu_--QTWhE=w1280"
                         alt="Banner 3"
                       />
                     </picture>
@@ -173,16 +232,17 @@ function Hero() {
                   <span className="price-sub-text">2.40 Cr*</span>
                   <span className="price"> Onwards.</span>
                 </div>
+                {/* THE BUTTON */}
                 <button
                   data-id="Enquiry"
                   type="button"
                   className="custom-btn btn btn-block mx-auto data-id-btn on-rera"
-                  data-bs-target="#enquire-modal"
-                  data-bs-toggle="modal"
-                  data-bs-whatever="Enquire Now"
+                  onClick={() => setOpen(true)}
                 >
                   <span className="enquireNowBtn">Enquire Now</span>
                 </button>
+
+
                 <button
                   data-id="Enquiry"
                   type="button"
@@ -589,62 +649,43 @@ function Hero() {
           </section>
 
           {/* Amenities section */}
-          <section className="sec1" id="amenities">
-            <div className="container">
-              <h1 className="section-title on-rera">
-                Satyam Codename Showstopper - Luxurious Amenities
-              </h1>
-              <h1 className="section-title non-rera mb-4">Proposed Amenities</h1>
-              <div className="slick-wrapper">
-                <div className="inline-flex align-items-center">
-                  <div id="slick1">
-                    {[
-                      { img: 'Amphitheatre.webp', alt: 'Amphitheatre' },
-                      { img: 'Court.webp', alt: 'Court' },
-                      { img: 'KidsPlayArea.webp', alt: 'Kids Play Area' },
-                      { img: 'Out%20in%20the%20Nature.webp', alt: 'Out in the Nature' },
-                      { img: 'Parking.webp', alt: 'Parking' },
-                      { img: 'Pet%20Park.webp', alt: 'Pet Park' },
-                      { img: 'Sitting%20Area.webp', alt: 'Sitting Area' },
-                      { img: 'Swing%20set.webp', alt: 'Swing set' },
-                    ].map((item, index) => (
-                      <div key={index} className="slide-item">
-                        <div
-                          className="amenity-content amenities-img-holder"
-                          style={{ width: '100%', height: 'auto' }}
-                        >
-                          <img
-                            src={`./public/Images/${item.img}`}
-                            alt={item.alt}
-                          />
-                          <p>{item.alt}</p>
-                        </div>
+          <section style={sectionStyle}>
+            <h1 style={titleStyle}>Satyam Codename Showstopper - Luxurious Amenities</h1>
+            <div style={carouselContainerStyle}>
+              <div style={leftArrowStyle} onClick={scrollLeft}>&#8592;</div>
+              <div style={rightArrowStyle} onClick={scrollRight}>&#8594;</div>
+              <div style={carouselWrapperStyle} ref={carouselRef}>
+                {rows.map((row, rowIndex) => (
+                  <div style={rowStyle} key={rowIndex}>
+                    {row.map((amenity, index) => (
+                      <div style={cardStyle} key={index}>
+                        <img src={`./Images/${amenity.img}`} alt={amenity.label} style={imgStyle} />
+                        <div style={labelLeftStyle}>{amenity.label}</div>
+                        <div style={labelRightStyle}>Artistic Impression</div>
                       </div>
                     ))}
                   </div>
-                </div>
+                ))}
               </div>
-              <div className="text-center mt-3">
-                <button
-                  type="button"
-                  className="btn custom-btn data-id-btn on-rera"
-                  data-bs-target="#enquire-modal"
-                  data-bs-toggle="modal"
-                  data-bs-whatever="Enquire Now"
-                  data-id="Amenities"
-                >
-                  <span className="enquireNowBtn">Request All Amenities</span>
-                </button>
-                <button
-                  type="button"
-                  className="btn custom-btn data-id-btn non-rera"
-                  data-bs-target="#enquire-modal"
-                  data-bs-toggle="modal"
-                  data-bs-whatever="Enquire Now"
-                  data-id="Amenities"
-                >
-                  <span className="enquireNowBtn">Express Your Interest</span>
-                </button>
+            </div>
+          </section>
+          {/* Amenities section */}
+          <section style={sectionStyle}>
+            <div style={carouselContainerStyle}>
+              <div style={leftArrowStyle} onClick={scrollLeft}>&#8592;</div>
+              <div style={rightArrowStyle} onClick={scrollRight}>&#8594;</div>
+              <div style={carouselWrapperStyle} ref={carouselRef}>
+                {rows.map((row, rowIndex) => (
+                  <div style={rowStyle} key={rowIndex}>
+                    {row.map((amenity, index) => (
+                      <div style={cardStyle} key={index}>
+                        <img src={`./Images/${amenity.img}`} alt={amenity.label} style={imgStyle} />
+                        <div style={labelLeftStyle}>{amenity.label}</div>
+                        <div style={labelRightStyle}>Artistic Impression</div>
+                      </div>
+                    ))}
+                  </div>
+                ))}
               </div>
             </div>
           </section>
@@ -707,9 +748,8 @@ function Hero() {
                       ].map((tab, index) => (
                         <a
                           key={index}
-                          className={`nav-link d-flex align-items-center ${
-                            index === 0 ? 'active show' : ''
-                          }`}
+                          className={`nav-link d-flex align-items-center ${index === 0 ? 'active show' : ''
+                            }`}
                           data-bs-toggle="pill"
                           href={`#${tab.id}`}
                         >
@@ -791,7 +831,7 @@ function Hero() {
           </section>
 
           {/* Contact section */}
-                 <section id="contact">
+          <section id="contact">
             <div className="container">
               <div className="contact-inner">
                 <div className="container contact-data">
@@ -885,7 +925,7 @@ function Hero() {
                 </div>
               </div>
             </div>
-          </section> */}
+          </section>
 
           {/* About Developer */}
           <section className="sec1" id="overview">
@@ -1159,6 +1199,56 @@ function Hero() {
               />
             </div>
 
+
+            <div
+              className="form-group acceptance mb-3"
+              style={{ fontSize: "10px" }}
+            >
+              <label className="form-check-label text-start">
+                <input
+                  type="checkbox"
+                  className="form-check-input"
+                  defaultChecked
+                />
+
+                <span className="text on-rera">
+                  I Consent to The Processing of Provided Data According To{" "}
+                  <a
+                    href="Privacy-Policy.html"
+                    style={{ color: "#007bff" }}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Privacy Policy | Terms & Conditions
+                  </a>
+                  , I Authorize Globe Pride Realty and its representatives to Call,
+                  SMS, Email or WhatsApp Me About Its Products and Offers. I
+                  acknowledge that the project I am enquiring about has not yet
+                  received RERA clearance. This Consent Overrides Any Registration
+                  For DNC/NDNC.
+                </span>
+
+                <span className="text non-rera">
+                  Please be informed that this website is not intended to facilitate
+                  any sales transactions. I understand and acknowledge that the
+                  project I am interested in hasn't yet secured RERA clearance.
+                  The primary purpose of this website is to generate interest and
+                  gather information. By providing my data, I consent to its use in
+                  accordance with the{" "}
+                  <a
+                    href="Privacy-Policy.html"
+                    style={{ color: "#007bff" }}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Privacy Policy | Terms & Conditions
+                  </a>
+                  .
+                </span>
+              </label>
+            </div>
+
+
             <input type="hidden" name="form_name" value="Pre-Register" />
             <input type="hidden" name="website_url" />
 
@@ -1169,8 +1259,63 @@ function Hero() {
               <span className="enquireNowBtn">Pre-Register Now</span>
             </button>
           </form>
+          <div className="enqModal mt-4">
+            <div className="row text-center justify-content-center icon-sec m-0">
+
+              <div className="col-4">
+                <img
+                  src="./Images/Instant Call Back.gif"
+                  width="42"
+                  className="img-fluid data-id-btn"
+                  alt="Instant Call Back"
+                />
+                <p className="mb-0">Instant Call Back</p>
+              </div>
+
+              <div className="col-4">
+                <img
+                  src="./Images/Free Site Visit.gif"
+                  width="42"
+                  className="img-fluid data-id-btn"
+                  style={{ scale: "1.5" }}
+                  alt="Free Site Visit"
+                />
+                <p className="mb-0">Free Site Visit</p>
+              </div>
+
+              <div className="col-4">
+                <img
+                  src="./Images/Best Price.gif"
+                  width="42"
+                  className="img-fluid"
+                  alt="Best Price"
+                />
+                <p className="mb-0">Best Price</p>
+              </div>
+
+            </div>
+          </div>
+
         </div>
-      </section> */}
+        <div className="call-back-section text-center on-rera">
+          <button
+            id="right-panel-request-callback-button"
+            className="custom-btn btn btn-block mx-auto data-id-btn"
+            data-bs-target="#enquire-modal"
+            data-bs-toggle="modal"
+            data-bs-whatever="Enquire Now"
+            data-id="Call Back"
+          >
+            <span className="enquireNowBtn">Request Call Back</span>
+          </button>
+        </div>
+
+
+      </section>
+
+
+
+
     </div>
   );
 }
