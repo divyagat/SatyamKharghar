@@ -22,7 +22,7 @@ function Hero() {
     console.log("📥 Form Submit:", data);
 
     try {
-      const res = await fetch("http://localhost:5000/send-crm", {
+      const res = await fetch("https://satyam-kharghar.vercel.app/send-crm", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -98,162 +98,219 @@ function Hero() {
       <main className="left-section">
         <div className="page-wrapper">
           {/* Top Section */}
-          <section id="home">
-            <div className="container-fluid">
+          <section id="home" style={{ position: "relative" }}>
+            <div className="container-fluid" style={{ position: "relative" }}>
+
+              {/* LEFT OVERLAY INFO CARD */}
+              <div
+                style={{
+                  position: "absolute",
+                  top: "50%",
+                  left: "3%",
+                  transform: "translateY(-50%)",
+                  zIndex: 20,
+                  width: "100%",
+                  maxWidth: "360px",
+                  background: "#ffffff",
+                  borderRadius: "16px",
+                  padding: "20px 22px",
+                  boxShadow: "0 8px 25px rgba(0,0,0,0.20)",
+                }}
+              >
+                {/* NEW LAUNCH TAG */}
+                <div
+                  style={{
+                    background: "Black",
+                    color: "#fff",
+                    padding: "6px 18px",
+                    width: "fit-content",
+                    borderRadius: "12px",
+                    margin: "0 auto 14px",
+                    fontWeight: 700,
+                    fontSize: "14px",
+                  }}
+                >
+                  NEW LAUNCH
+                </div>
+
+                {/* TITLE */}
+                <h1
+                  style={{
+                    textAlign: "center",
+                    fontWeight: 700,
+                    fontSize: "24px",
+                    lineHeight: "28px",
+                    textTransform: "uppercase",
+                    marginBottom: "6px",
+                    background: "linear-gradient(90deg, #2C1363, #3A1F78)", // Dark Blue-Purple Gradient
+                    WebkitBackgroundClip: "text",
+                    color: "black",
+                    text : "Black",
+                  }}
+                >
+                  SATYAM CODENAME SHOWSTOPPER
+                </h1>
+
+                <h3
+                  style={{
+                    textAlign: "center",
+                    fontSize: "16px",
+                    fontWeight: 500,
+                    margin: "0 0 5px",
+                  }}
+                >
+                  At Kharghar
+                </h3>
+
+                <p
+                  style={{
+                    textAlign: "center",
+                    fontSize: "14px",
+                    color: "#444",
+                    marginBottom: "16px",
+                  }}
+                >
+                  By Satyam Developers
+                </p>
+
+                {/* GREY BOX */}
+                <div
+                  style={{
+                    background: "#f1f1f1",
+                    padding: "14px 18px",
+                    borderRadius: "10px",
+                    marginBottom: "16px",
+                  }}
+                >
+                  {[
+                    ["Land Parcel", "3.25 Acre"],
+                    ["Floors", "G+31 Storeys"],
+                    ["Possession", "2027"],
+                  ].map(([label, value], i) => (
+                    <div
+                      key={i}
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        padding: "4px 0",
+                        fontSize: "15px",
+                      }}
+                    >
+                      <span>{label}</span>
+                      <strong>{value}</strong>
+                    </div>
+                  ))}
+                </div>
+
+                {/* BLUE EOI BOX */}
+                <div
+                  style={{
+                    border: "2px dashed #3A1F78",
+                    background: "#EFEAFB",
+                    padding: "14px",
+                    textAlign: "center",
+                    borderRadius: "10px",
+                    marginBottom: "16px",
+                  }}
+                >
+                  <p
+                    style={{
+                      margin: 0,
+                      fontWeight: 700,
+                      color: "Black",
+                      fontSize: "16px",
+                    }}
+                  >
+                    EOI Starts From 2 Lakhs
+                  </p>
+
+                  <p
+                    style={{
+                      margin: "4px 0 0",
+                      fontSize: "15px",
+                      color: "#3A1F78",
+                    }}
+                  >
+                    55 Acres Mixed Use Project
+                  </p>
+                </div>
+
+                {/* PRICE */}
+                <p style={{ textAlign: "center", margin: "0 0 6px", fontWeight: 500 }}>
+                  Premium 2, 3 & 4 BHK Homes
+                </p>
+
+                <div style={{ textAlign: "center" }}>
+                  <span style={{ color: "#3A1F78", fontSize: "22px", fontWeight: 700 }}>
+                    ₹
+                  </span>{" "}
+                  <span style={{ color: "#3A1F78", fontSize: "26px", fontWeight: 800 }}>
+                    2.40 Cr*
+                  </span>{" "}
+                  <span style={{ fontSize: "18px" }}>Onwards</span>
+                </div>
+
+                {/* CTA BUTTON */}
+                <div style={{ textAlign: "center", marginTop: "18px" }}>
+                  <a href="/EnquiryPopup.jsx" style={{ textDecoration: "none" }}>
+                    <button
+                      style={{
+                        background: "black",
+                        color: "#fff",
+                        border: "none",
+                        padding: "12px 30px",
+                        borderRadius: "30px",
+                        fontSize: "16px",
+                        fontWeight: 600,
+                        boxShadow: "0 5px 14px rgba(58,31,120,0.35)",
+                        width: "70%",
+                        cursor: "pointer",
+                      }}
+                    >
+                      Enquire Now
+                    </button>
+                  </a>
+                </div>
+              </div>
+
+
+              {/* CAROUSEL */}
               <div
                 id="banner-carousel"
                 className="carousel slide d-block"
                 data-bs-ride="carousel"
+                style={{ position: "relative", zIndex: 10 }}
               >
                 <div className="carousel-indicators">
-                  <button
-                    type="button"
-                    data-bs-target="#banner-carousel"
-                    data-bs-slide-to="0"
-                    className="active"
-                    aria-current="true"
-                    aria-label="Slide 1"
-                  ></button>
-                  <button
-                    type="button"
-                    data-bs-target="#banner-carousel"
-                    data-bs-slide-to="1"
-                    aria-label="Slide 2"
-                  ></button>
-                  <button
-                    type="button"
-                    data-bs-target="#banner-carousel"
-                    data-bs-slide-to="2"
-                    aria-label="Slide 3"
-                  ></button>
+                  <button type="button" data-bs-target="#banner-carousel" data-bs-slide-to="0" className="active"></button>
+                  <button type="button" data-bs-target="#banner-carousel" data-bs-slide-to="1"></button>
+                  <button type="button" data-bs-target="#banner-carousel" data-bs-slide-to="2"></button>
                 </div>
+
                 <div className="carousel-inner">
                   <div className="carousel-item active">
-                    <picture>
-                      <source
-                        media="(max-width: 750px)"
-                        srcSet="./public/Images/M1.webp"
-                      />
-                      <img
-                        className="d-block w-100"
-                        src="https://lh3.googleusercontent.com/sitesv/AAzXCkeuOgmWeNQWjV0kiVbqHogaEYgpXVm4LgkPoYTUSJL0lYvuoMqmLYRziSasz9n2RG3FeSfHERVseZfI_b_0cZ_UAKPi9Skp1htM3U5xrwtOcpYsPAOFxy7DUFz0yKZlaXjFiB6g6QbCxhdhZlFa1ip613uyZuj38NvIORPPKWWOZ1Kcr3tGbEvEgZQ=w1280"
-                        alt="Banner 1"
-                      />
-                    </picture>
+                    <img className="d-block w-100" src="https://showstopper-kharghar.site/Raheja/img/webp/slider2.webp" />
                   </div>
+
                   <div className="carousel-item">
-                    <picture>
-                      <source
-                        media="(max-width: 750px)"
-                        srcSet="https://lh3.googleusercontent.com/sitesv/AAzXCkcuL3NhrqT45MFwEV7TBcN6BxgFgtCS-Xmt4xFqHlxXh-fPCBruMWHS9fMqzZRMLKovKqgZtOO9sg3glcYs-H-ThHgWulhMd_C5swaPimYuyeubeAiv-Vcy-GYi8PiKJGzMFQbT6n-VuZfZYNo8X5gQQakQLsuxLRgk4KaVUM6i9Jm9nuqc77nffuE=w1280"
-                      />
-                      <img
-                        className="d-block w-100"
-                        src="https://lh3.googleusercontent.com/sitesv/AAzXCkcuL3NhrqT45MFwEV7TBcN6BxgFgtCS-Xmt4xFqHlxXh-fPCBruMWHS9fMqzZRMLKovKqgZtOO9sg3glcYs-H-ThHgWulhMd_C5swaPimYuyeubeAiv-Vcy-GYi8PiKJGzMFQbT6n-VuZfZYNo8X5gQQakQLsuxLRgk4KaVUM6i9Jm9nuqc77nffuE=w1280"
-                        alt="Banner 2"
-                      />
-                    </picture>
+                    <img className="d-block w-100" src="https://showstopper-kharghar.site/Raheja/img/webp/slider1.webp" />
                   </div>
+
                   <div className="carousel-item">
-                    <picture>
-                      <source
-                        media="(max-width: 750px)"
-                        srcSet=".https://lh3.googleusercontent.com/sitesv/AAzXCkeZxptCtZW8NrC8pPiaAcumsx0cYNqVC1vOhgvtf4Crv5IROfFURGIdes_1V6BM3D6cA388J6zv29fBKxSZM-M83yrHDjL00JQJNdZ7STeF9AO29x_v_WhLPR2lI4VPJxxyrCaIYuXcOHDdVKd5WgXLK-xjAwz1MAXz61bIo8tkPcKYGFUy69pRLFg=w1280"
-                      />
-                      <img
-                        className="d-block w-100"
-                        src="https://lh3.googleusercontent.com/sitesv/AAzXCkdz0HvvCGwbGQHD_jOyGXRFZ7_OOlXZQ3hWWFeU9iSzM7eyDxT-Lw110O8g-rsc3L2DEOq-2sqcRVJb3YY_RSasecL7Uk77DLYzOBs1j2ij0GhpHhwkIF65kr_p4SJBehkmYiqk1KAbRFM92ZSyWNjOyg2B4A1p-NLOiTg2VrWBw10i8wu_--QTWhE=w1280"
-                        alt="Banner 3"
-                      />
-                    </picture>
+                    <img className="d-block w-100" src="https://showstopper-kharghar.site/Raheja/img/webp/slider1.webp" />
                   </div>
                 </div>
+
                 <div className="slide-btn">
-                  <button
-                    className="carousel-control-prev"
-                    type="button"
-                    data-bs-target="#banner-carousel"
-                    data-bs-slide="prev"
-                  >
-                    <span
-                      className="carousel-control-prev-icon"
-                      aria-hidden="true"
-                    ></span>
-                    <span className="visually-hidden">Previous</span>
+                  <button className="carousel-control-prev" type="button" data-bs-slide="prev">
+                    <span className="carousel-control-prev-icon"></span>
                   </button>
-                  <button
-                    className="carousel-control-next"
-                    type="button"
-                    data-bs-target="#banner-carousel"
-                    data-bs-slide="next"
-                  >
-                    <span
-                      className="carousel-control-next-icon"
-                      aria-hidden="true"
-                    ></span>
-                    <span className="visually-hidden">Next</span>
+                  <button className="carousel-control-next" type="button" data-bs-slide="next">
+                    <span className="carousel-control-next-icon"></span>
                   </button>
                 </div>
               </div>
-              <div className="project-details">
-                <p className="text-center mb-1 on-rera">New Launch</p>
-                <p className="text-center mb-1 non-rera">Coming Soon</p>
-                <h1
-                  className="text-center mb-1"
-                  style={{ fontWeight: 600, textTransform: 'uppercase' }}
-                >
-                  Codename Showstopper
-                </h1>
-                <h6 className="text-center mb-2" style={{ color: '#353535' }}>
-                  By Satyam Developers
-                </h6>
-                <h6
-                  className="text-center mb-2"
-                  style={{ fontSize: '15px', color: '#6e6e6e' }}
-                >
-                  At Kharghar, Navi Mumbai
-                </h6>
-                <div className="offerBox animatedtext">
-                  <div className="innerBox">
-                    <p className="mb-0">
-                      2 BHK With EOI ₹ 2 Lacs <br />
-                      3 BHK With EOI ₹ 3 Lacs <br />
-                      4 BHK With EOI ₹ 4 Lacs*
-                    </p>
-                    <p className="mb-0">◆ Book Now & Get Your Dream Home*</p>
-                  </div>
-                </div>
-                <p className="offer-info-text text-center mb-0">
-                  {' '}
-                  2, 3 & 4 BHK Residences At
-                </p>
-                <div className="price-text">
-                  <span className="color-imp">₹ </span>
-                  <span className="price-sub-text">2.40 Cr*</span>
-                  <span className="price"> Onwards.</span>
-                </div>
-                {/* THE BUTTON */}
-                <button
-                  data-id="Enquiry"
-                  type="button"
-                  className="custom-btn btn btn-block mx-auto data-id-btn on-rera"
-                  onClick={() => setOpen(true)}
-                >
-                  <span className="enquireNowBtn">Enquire Now</span>
-                </button>
 
-
-                <button
-                  data-id="Enquiry"
-                  type="button"
-                  className="custom-btn btn btn-block mx-auto data-id-btn non-rera"
-                  data-bs-target="#enquire-modal"
-                  data-bs-toggle="modal"
-                  data-bs-whatever="Enquire Now"
-                >
-                  <span className="enquireNowBtn">Express Your Interest</span>
-                </button>
-              </div>
             </div>
           </section>
 
@@ -317,13 +374,18 @@ function Hero() {
                     <span className="text on-rera">
                       I Consent to The Processing of Provided Data According To{' '}
                       <a
-                        href="Privacy-Policy.html"
-                        style={{ color: '#007bff' }}
+                        href="/TermsAndCondition"
+                        style={{
+                          color: "#007bff",
+                          textDecoration: "none",
+                          fontWeight: "500",
+                        }}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
                         Privacy Policy | Terms & Conditions
                       </a>
+
                       , I Authorize Globe Pride Realty and its representatives to Call, SMS, Email or WhatsApp Me About Its Products
                       and Offers. I acknowledge that the project I am enquiring about has not yet
                       received RERA clearance. This Consent Overrides Any Registration For DNC/NDNC.
@@ -335,14 +397,15 @@ function Hero() {
                       primary purpose of this website is to generate interest and gather information.
                       By providing my data, I consent to its use in accordance with the
                       <a
-                        href="Privacy-Policy.html"
+                        href="/PrivacyPolicy"
                         style={{ color: '#007bff' }}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
                         {' '}
-                        Privacy Policy | Terms & Conditions
+                        Privacy Policy | Terms & Conditions | Cookie Policy
                       </a>
+
                     </span>
                   </label>
                 </div>
@@ -353,13 +416,18 @@ function Hero() {
                 >
                   <span className="enquireNowBtn">Pre-Register Now</span>
                 </button>
-                <button
-                  type="submit"
-                  data-id="Pre-Register Mobile"
-                  className="custom-btn data-id-btn non-rera"
-                >
-                  <span className="enquireNowBtn">Express Your Interest</span>
-                </button>
+
+                <a href="/EnquiryPopup">
+                  <button
+                    type="submit"
+                    data-id="Pre-Register Mobile"
+                    className="custom-btn data-id-btn non-rera"
+                  >
+                    <span className="enquireNowBtn">Express Your Interest</span>
+                  </button>
+                </a>
+
+
               </form>
             </div>
           </div>
@@ -444,7 +512,7 @@ function Hero() {
                     >
                       <span className="enquireNowBtn">
                         <img
-                          src="./public/Images/download.gif"
+                          src="/Images/download.gif"
                           className="img-fluid icon_sz me-2"
                           alt="Download"
                         />
@@ -465,7 +533,7 @@ function Hero() {
                 </div>
                 <div className="col-xl-5 col-lg-5 col-sm-12 text-center ps-0 pe-0">
                   <img
-                    src="./public/Images/About.webp"
+                    src="/Images/About.webp"
                     width="100%"
                     className="data-id-btn"
                     data-id="Project Video"
@@ -562,7 +630,7 @@ function Hero() {
                     style={{ cursor: 'pointer' }}
                   >
                     <img
-                      src="./public/Images/MasterPlan.webp"
+                      src="/Images/MasterPlan.webp"
                       alt="Master Plan"
                       className="img-fluid unit_plan_img"
                     />
@@ -612,7 +680,7 @@ function Hero() {
                     style={{ cursor: 'pointer' }}
                   >
                     <img
-                      src="./public/Images/UnitPlan.webp"
+                      src="/Images/UnitPlan.webp"
                       alt="Unit Plan"
                       className="img-fluid unit_plan_img"
                     />
@@ -659,7 +727,7 @@ function Hero() {
                   <div style={rowStyle} key={rowIndex}>
                     {row.map((amenity, index) => (
                       <div style={cardStyle} key={index}>
-                        <img src={`./Images/${amenity.img}`} alt={amenity.label} style={imgStyle} />
+                        <img src={`/Images/${amenity.img}`} alt={amenity.label} style={imgStyle} />
                         <div style={labelLeftStyle}>{amenity.label}</div>
                         <div style={labelRightStyle}>Artistic Impression</div>
                       </div>
@@ -679,7 +747,7 @@ function Hero() {
                   <div style={rowStyle} key={rowIndex}>
                     {row.map((amenity, index) => (
                       <div style={cardStyle} key={index}>
-                        <img src={`./Images/${amenity.img}`} alt={amenity.label} style={imgStyle} />
+                        <img src={`/Images/${amenity.img}`} alt={amenity.label} style={imgStyle} />
                         <div style={labelLeftStyle}>{amenity.label}</div>
                         <div style={labelRightStyle}>Artistic Impression</div>
                       </div>
@@ -691,18 +759,74 @@ function Hero() {
           </section>
 
           {/* Gallery section */}
-          <section className="sec2" id="gallery">
+
+
+
+
+          <section
+            className="sec2"
+            id="gallery"
+            style={{ padding: "60px 0" }}
+          >
             <div className="container wow fadeInUp">
-              <h1 className="section-title">Project Gallery</h1>
+              <h1
+                className="section-title"
+                style={{
+                  textAlign: "center",
+                  marginBottom: "40px",
+                  fontSize: "38px",
+                  fontWeight: "700",
+                  color: "#222",
+                }}
+              >
+                Project Gallery
+              </h1>
+
               <div className="content-gallery">
-                <div className="gallery js-gallery">
+                <div
+                  className="gallery js-gallery"
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+                    gap: "22px",
+                  }}
+                >
                   {[1, 2, 3, 4].map((n) => (
                     <div key={n} className="gallery-item">
-                      <div className="gallery-img-holder js-gallery-popup">
+                      <div
+                        className="gallery-img-holder js-gallery-popup"
+                        style={{
+                          overflow: "hidden",
+                          borderRadius: "14px",
+                          cursor: "pointer",
+                          boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+                          transition: "transform 0.3s ease",
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.transform = "scale(1.03)";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.transform = "scale(1)";
+                        }}
+                      >
                         <img
-                          src={`./public/Images/Gallery${n}.webp`}
+                          src={`/Images/Gallery${n}.webp`}
                           alt={`Gallery ${n}`}
                           className="gallery-img"
+                          loading="lazy"
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "cover",
+                            transition: "transform 0.35s ease",
+                            display: "block",
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.transform = "scale(1.15)";
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.transform = "scale(1)";
+                          }}
                         />
                       </div>
                     </div>
@@ -754,7 +878,7 @@ function Hero() {
                           href={`#${tab.id}`}
                         >
                           <img
-                            src={`./public/Images/${tab.img}`}
+                            src={`/Images/${tab.img}`}
                             width="36"
                             className="img-fluid mb-2 me-2"
                             alt={tab.label}
@@ -838,7 +962,7 @@ function Hero() {
                   <div className="row">
                     <div className="col-lx-6 col-lg-6 col-sm-12 image-carousel1 ps-0 pe-0">
                       <img
-                        src="./public/Images/site_visit.webp"
+                        src="/Images/site_visit.webp"
                         className="img-fluid"
                         alt="Site Visit"
                       />
@@ -893,7 +1017,7 @@ function Hero() {
                                 <span className="text on-rera">
                                   I Consent to data processing as per{" "}
                                   <a
-                                    href="Privacy-Policy.html"
+                                    href="/PrivacyPolicy"
                                     style={{ color: "#007bff" }}
                                     target="_blank"
                                   >
@@ -916,7 +1040,7 @@ function Hero() {
 
                     <div className="col-lx-6 col-lg-6 col-sm-12 ps-0 pe-0 image-carousel">
                       <img
-                        src="./public/Images/site_visit.webp"
+                        src="/Images/site_visit.webp"
                         className="img-fluid"
                         alt="Site Visit"
                       />
@@ -928,7 +1052,7 @@ function Hero() {
           </section>
 
           {/* About Developer */}
-          <section className="sec1" id="overview">
+          {/* <section className="sec1" id="overview">
             <div className="container">
               <div className="row">
                 <div className="col-xl-10 col-lg-7 col-sm-12">
@@ -945,14 +1069,14 @@ function Hero() {
                       trust.
                     </p>
                     <p style={{ fontSize: '14px' }}>
-                      ✔️ Government RERA Authorised Advertiser’s: Globe Pride Realty, RERA
-                      Registration No A52000013825, Udyam Number : UDYAM-MH-27-0197530
+                      ✔️ Government RERA Authorised Advertiser’s: Associatte Proptech Pvt Ltd, RERA
+                      Registration No A52100029540
                     </p>
                   </div>
                 </div>
               </div>
             </div>
-          </section>
+          </section> */}
 
           {/* WhatsApp Button */}
           <a
@@ -963,7 +1087,7 @@ function Hero() {
             rel="noopener noreferrer"
           >
             <span>
-              <img src="./public/Images/whatsappAnim.gif" width="34" alt="WhatsApp" />
+              <img src="/Images/whatsappAnim.gif" width="34" alt="WhatsApp" />
             </span>
           </a>
 
@@ -971,19 +1095,14 @@ function Hero() {
           <footer className="sec3">
             <div className="container on-rera">
               <div className="foot_logo mb-3">
-                <img
-                  src="./public/Images/logo.png"
-                  alt="Project Logo"
-                  className="d-block mx-auto project-logo"
-                  style={{ width: '250px' }}
-                />
+               
               </div>
               <div id="foot_rera_qr" className="pt-2 mb-2"></div>
               <div className="elementor-widget-container text-center">
                 <p>
                   This project is RERA registered.&nbsp; <br />
                   <a style={{ textDecoration: 'none', color: '#000', fontSize: '12px' }}>
-                    <span>Agent Rera Number : A52000013825</span>
+                    <span>Agent Rera Number : A52100029540</span>
                     <br />
                     <span>Project Rera Number : Coming Soon!</span>
                     <br />
@@ -1009,26 +1128,47 @@ function Hero() {
                 website. I acknowledge that the project I am enquiring about has not yet received RERA
                 clearance. Thank you for visiting our website.
               </p>
-              <p className="text-center mb-0 pb-3">
+              <div className="d-flex justify-content-center gap-3 mt-3">
+
                 <a
-                  href="Privacy-Policy.html"
+                  href="/PrivacyPolicy"
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ textAlign: 'center', textDecoration: 'none' }}
+                  className="text-decoration-none"
                 >
-                  Privacy Policy | Terms & Conditions
+                  Privacy Policy
                 </a>
-              </p>
+
+                <a
+                  href="/TermsConditions"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-decoration-none"
+                >
+                  Terms & Conditions
+                </a>
+
+                <a
+                  href="/CookiePolicy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-decoration-none"
+                >
+                  Cookie Policy
+                </a>
+
+              </div>
+
             </div>
             <div className="container non-rera">
-              <div className="foot_logo mb-3">
+              {/* <div className="foot_logo mb-3">
                 <img
-                  src="./public/Images/logo.png"
+                  src="/Images/logo.png"
                   alt="Project Logo"
                   className="d-block mx-auto project-logo"
                   style={{ width: '250px' }}
                 />
-              </div>
+              </div> */}
               <p id="disclaimer">
                 The content on this website is for informational purposes only and is not intended as an
                 offer for services or sale. The project mentioned has not yet received RERA clearance but is
@@ -1069,9 +1209,9 @@ function Hero() {
           <section id="footer-links">
             <div className="container text-center">
               <p>
-                All Rights Reserved. © 2025{' '}
+                Marketed By{' '}
                 <a href="#" target="_blank" className="on-rera" rel="noopener noreferrer">
-                  Globe Pride Realty
+                  Associatte Prop Tech Pvt. Ltd.
                 </a>
               </p>
             </div>
@@ -1081,9 +1221,9 @@ function Hero() {
             <div className="footer-enquiryBtn d-flex d-sm-none">
               <a
                 className="monCall data-id-btn on-rera"
-                href="tel:+918169449052"
+                href="tel:+918881188181"
               >
-                <img src="./public/Images/callus.gif" className="img-fluid icon_sz" alt="Call" />
+                <img src="/Images/callus.gif" className="img-fluid icon_sz" alt="Call" />
                 <br />
                 Call
               </a>
@@ -1094,7 +1234,7 @@ function Hero() {
                 data-bs-whatever="Enquire Now"
                 data-id="call back"
               >
-                <img src="./public/Images/callus.gif" className="img-fluid icon_sz" alt="Call" />
+                <img src="/Images/callus.gif" className="img-fluid icon_sz" alt="Call" />
                 <br />
                 Call
               </a>
@@ -1104,7 +1244,7 @@ function Hero() {
                 href="#"
                 rel="noopener noreferrer"
               >
-                <img src="./public/Images/WhatsApp.gif" className="img-fluid icon_sz" alt="WhatsApp" />
+                <img src="/Images/WhatsApp.gif" className="img-fluid icon_sz" alt="WhatsApp" />
                 <br />
                 WhatsApp
               </a>
@@ -1116,7 +1256,7 @@ function Hero() {
                 data-id="Enquire Now"
               >
                 <img
-                  src="./public/Images/Instant%20Call%20Back.gif"
+                  src="/Images/Instant%20Call%20Back.gif"
                   className="img-fluid icon_sz"
                   alt="Enquire"
                 />
@@ -1131,7 +1271,7 @@ function Hero() {
                 data-id="Enquire Now"
               >
                 <img
-                  src="./public/Images/Instant%20Call%20Back.gif"
+                  src="/Images/Instant%20Call%20Back.gif"
                   className="img-fluid icon_sz"
                   alt="Express Interest"
                 />
@@ -1149,7 +1289,7 @@ function Hero() {
         <div className="og-block d-flex justify-content-between">
           <button className="btn data-id-btn">
             <img
-              src="./public/Images/Calendar.gif"
+              src="/Images/Calendar.gif"
               className="img-fluid icon_sz"
               alt="Calendar"
             />
@@ -1158,12 +1298,12 @@ function Hero() {
 
           <button className="btn on-rera">
             <img
-              src="./public/Images/callus.gif"
+              src="/Images/callus.gif"
               className="img-fluid icon_sz"
               alt="Call"
             />
-            <a href="tel:+918169449052" style={{ color: "#fff" }}>
-              +91 8169449052
+            <a href="tel:+918881188181" style={{ color: "#fff" }}>
+              +91 8881188181
             </a>
           </button>
         </div>
@@ -1264,7 +1404,7 @@ function Hero() {
 
               <div className="col-4">
                 <img
-                  src="./Images/Instant Call Back.gif"
+                  src="/Images/Instant Call Back.gif"
                   width="42"
                   className="img-fluid data-id-btn"
                   alt="Instant Call Back"
@@ -1274,7 +1414,7 @@ function Hero() {
 
               <div className="col-4">
                 <img
-                  src="./Images/Free Site Visit.gif"
+                  src="/Images/Free Site Visit.gif"
                   width="42"
                   className="img-fluid data-id-btn"
                   style={{ scale: "1.5" }}
@@ -1285,7 +1425,7 @@ function Hero() {
 
               <div className="col-4">
                 <img
-                  src="./Images/Best Price.gif"
+                  src="/Images/Best Price.gif"
                   width="42"
                   className="img-fluid"
                   alt="Best Price"

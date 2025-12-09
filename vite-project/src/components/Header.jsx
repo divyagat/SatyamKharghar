@@ -4,16 +4,16 @@ function Header() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light fixed-top">
       <div className="container-fluid">
-        
+
         {/* Logo */}
-        <a className="navbar-brand" href="#home">
+        {/* <a className="navbar-brand" href="#home">
           <img
-            src="./public/Images/logo.png"
+            src="./Images/logo.png"
             alt="Project Logo"
             className="img-fluid d-block mx-auto project-logo"
             style={{ width: "250px", maxWidth: "250px" }}
           />
-        </a>
+        </a> */}
 
         {/* Toggle Button */}
         <div className="d-flex">
@@ -73,7 +73,7 @@ function Header() {
                 <i className="far fa-map mr-2"></i> Location
               </a>
             </li>
-
+            {/* 
             <li className="nav-item on-rera">
               <a className="nav-link brand-logo">
                 <img
@@ -82,7 +82,7 @@ function Header() {
                   className="img-fluid"
                 />
               </a>
-            </li>
+            </li> */}
 
           </ul>
         </div>
