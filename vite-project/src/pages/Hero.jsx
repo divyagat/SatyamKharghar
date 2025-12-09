@@ -737,26 +737,7 @@ function Hero() {
               </div>
             </div>
           </section>
-          {/* Amenities section */}
-          <section style={sectionStyle}>
-            <div style={carouselContainerStyle}>
-              <div style={leftArrowStyle} onClick={scrollLeft}>&#8592;</div>
-              <div style={rightArrowStyle} onClick={scrollRight}>&#8594;</div>
-              <div style={carouselWrapperStyle} ref={carouselRef}>
-                {rows.map((row, rowIndex) => (
-                  <div style={rowStyle} key={rowIndex}>
-                    {row.map((amenity, index) => (
-                      <div style={cardStyle} key={index}>
-                        <img src={`/Images/${amenity.img}`} alt={amenity.label} style={imgStyle} />
-                        <div style={labelLeftStyle}>{amenity.label}</div>
-                        <div style={labelRightStyle}>Artistic Impression</div>
-                      </div>
-                    ))}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
+         
 
           {/* Gallery section */}
 
