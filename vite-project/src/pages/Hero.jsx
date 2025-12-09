@@ -145,7 +145,7 @@ function Hero() {
                     background: "linear-gradient(90deg, #2C1363, #3A1F78)", // Dark Blue-Purple Gradient
                     WebkitBackgroundClip: "text",
                     color: "black",
-                    text : "Black",
+                    text: "Black",
                   }}
                 >
                   SATYAM CODENAME SHOWSTOPPER
@@ -386,7 +386,7 @@ function Hero() {
                         Privacy Policy | Terms & Conditions
                       </a>
 
-                      , I Authorize Globe Pride Realty and its representatives to Call, SMS, Email or WhatsApp Me About Its Products
+                      , I Authorize Associatte PropTech Pvt Ltdand its representatives to Call, SMS, Email or WhatsApp Me About Its Products
                       and Offers. I acknowledge that the project I am enquiring about has not yet
                       received RERA clearance. This Consent Overrides Any Registration For DNC/NDNC.
                     </span>
@@ -737,7 +737,7 @@ function Hero() {
               </div>
             </div>
           </section>
-         
+
 
           {/* Gallery section */}
 
@@ -825,22 +825,22 @@ function Hero() {
               </h1>
               <div className="row mt-2">
                 <div className="col-xl-12">
-                  <iframe
+                  <img
                     title="Google map"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.355759148016!2d73.07064017593574!3d19.047287252871854!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c3f84aabca5b%3A0x2867bcd83f974e16!2sCodename%20Showstopper%20by%20Satyam%20and%20Metro!5e0!3m2!1sen!2sin!4v1763528748552!5m2!1sen!2sin"
+                    src="/Images/Screenshot_9-12-2025_131720_localhost.jpeg"
+                    alt="Google Map"
                     width="100%"
                     height="300"
                     style={{
                       border: '1px solid #333',
                       padding: '2px',
                       background: '#fff',
+                      objectFit: 'cover',
                     }}
-                    frameBorder="0"
-                    allowFullScreen
-                    sandbox="allow-scripts allow-same-origin"
-                  ></iframe>
+                  />
                 </div>
               </div>
+
               <div className="row pt-30 mb-3">
                 <div className="col-xl-12 col-lg-12 col-sm-12 text-dark amenities-info mt-3 ps-2 pe-2">
                   <div id="exTab1" className="fuild-container">
@@ -1040,7 +1040,7 @@ function Hero() {
                   <div className="overview-data">
                     <h1>About Globe Pride Realty</h1>
                     <p className="overview-info" style={{ fontSize: '16px' }}>
-                      Globe Pride Realty provides an integrated real estate ecosystem that caters to
+                      Associatte PropTech Pvt Ltdprovides an integrated real estate ecosystem that caters to
                       both businesses and home buyers. As an affiliate, our intelligent
                       business-to-business approach seamlessly integrates stakeholders, while our ZERO
                       cost assurance guarantees that we do not charge anything to our customers of any
@@ -1076,7 +1076,7 @@ function Hero() {
           <footer className="sec3">
             <div className="container on-rera">
               <div className="foot_logo mb-3">
-               
+
               </div>
               <div id="foot_rera_qr" className="pt-2 mb-2"></div>
               <div className="elementor-widget-container text-center">
@@ -1186,7 +1186,7 @@ function Hero() {
               </p>
             </div>
           </footer>
-
+ 
           <section id="footer-links">
             <div className="container text-center">
               <p>
@@ -1335,14 +1335,14 @@ function Hero() {
                 <span className="text on-rera">
                   I Consent to The Processing of Provided Data According To{" "}
                   <a
-                    href="Privacy-Policy.html"
+                    href="/PrivacyPolicy"
                     style={{ color: "#007bff" }}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     Privacy Policy | Terms & Conditions
                   </a>
-                  , I Authorize Globe Pride Realty and its representatives to Call,
+                  , I Authorize Associatte PropTech Pvt Ltd and its representatives to Call,
                   SMS, Email or WhatsApp Me About Its Products and Offers. I
                   acknowledge that the project I am enquiring about has not yet
                   received RERA clearance. This Consent Overrides Any Registration

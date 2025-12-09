@@ -6,14 +6,14 @@ function Header() {
       <div className="container-fluid">
 
         {/* Logo */}
-        {/* <a className="navbar-brand" href="#home">
+        <a className="navbar-brand" href="#home">
           <img
             src="./Images/logo.png"
             alt="Project Logo"
             className="img-fluid d-block mx-auto project-logo"
             style={{ width: "250px", maxWidth: "250px" }}
           />
-        </a> */}
+        </a>
 
         {/* Toggle Button */}
         <div className="d-flex">
