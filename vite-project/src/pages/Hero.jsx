@@ -1,8 +1,7 @@
 // import React from 'react';
-import React, { useRef } from "react";
-
-import { useEffect } from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { useState, useEffect, useRef } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import EnquiryPopup from "../components/EnquiryPopup";
 
 function Hero() {
   useEffect(() => {
@@ -91,10 +90,22 @@ function Hero() {
     rows.push(amenities.slice(i, i + 3));
   }
 
+  const [open, setOpen] = useState(false);
 
+  useEffect(() => {
+    const t = setTimeout(() => {
+      setOpen(true); // auto open after 5s
+      console.log("Auto opening popup after 5s");
+    }, 5000);
+
+    return () => clearTimeout(t);
+  }, []);
 
   return (
     <div className="main-container d-flex">
+
+      {/* Popup component */}
+      <EnquiryPopup open={open} setOpen={setOpen} />
       <main className="left-section">
         <div className="page-wrapper">
           {/* Top Section */}
@@ -224,7 +235,7 @@ function Hero() {
                     EOI Starts From 2 Lakhs
                   </p>
 
-                  <p
+                  {/* <p
                     style={{
                       margin: "4px 0 0",
                       fontSize: "15px",
@@ -232,7 +243,7 @@ function Hero() {
                     }}
                   >
                     55 Acres Mixed Use Project
-                  </p>
+                  </p> */}
                 </div>
 
                 {/* PRICE */}
@@ -252,24 +263,22 @@ function Hero() {
 
                 {/* CTA BUTTON */}
                 <div style={{ textAlign: "center", marginTop: "18px" }}>
-                  <a href="/EnquiryPopup.jsx" style={{ textDecoration: "none" }}>
-                    <button
-                      style={{
-                        background: "black",
-                        color: "#fff",
-                        border: "none",
-                        padding: "12px 30px",
-                        borderRadius: "30px",
-                        fontSize: "16px",
-                        fontWeight: 600,
-                        boxShadow: "0 5px 14px rgba(58,31,120,0.35)",
-                        width: "70%",
-                        cursor: "pointer",
-                      }}
-                    >
-                      Enquire Now
-                    </button>
-                  </a>
+                  <button
+                    type="button"
+                    onClick={() => setOpen(true)}
+                    style={{
+                      background: "black",
+                      color: "#fff",
+                      padding: "12px 20px",
+                      borderRadius: 30,
+                      border: "none",
+                      cursor: "pointer",
+                    }}
+                  >
+                    Enquire Now
+                  </button>
+
+
                 </div>
               </div>
 
@@ -297,18 +306,29 @@ function Hero() {
                   </div>
 
                   <div className="carousel-item">
-                    <img className="d-block w-100" src="https://showstopper-kharghar.site/Raheja/img/webp/slider1.webp" />
+                    <img className="d-block w-100" src="https://satyammetrocodenameshowstopper.com/assets/img/banner1.jpg" />
                   </div>
                 </div>
-
                 <div className="slide-btn">
-                  <button className="carousel-control-prev" type="button" data-bs-slide="prev">
+                  <button
+                    className="carousel-control-prev"
+                    type="button"
+                    data-bs-target="#banner-carousel"
+                    data-bs-slide="prev"
+                  >
                     <span className="carousel-control-prev-icon"></span>
                   </button>
-                  <button className="carousel-control-next" type="button" data-bs-slide="next">
+
+                  <button
+                    className="carousel-control-next"
+                    type="button"
+                    data-bs-target="#banner-carousel"
+                    data-bs-slide="next"
+                  >
                     <span className="carousel-control-next-icon"></span>
                   </button>
                 </div>
+
               </div>
 
             </div>
@@ -383,10 +403,10 @@ function Hero() {
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        Privacy Policy | Terms & Conditions
+                        Privacy Policy | Terms & Conditions | Cookie Policy
                       </a>
 
-                      , I Authorize Associatte PropTech Pvt Ltdand its representatives to Call, SMS, Email or WhatsApp Me About Its Products
+                      , I Authorize Globe Pride Realty and its representatives to Call, SMS, Email or WhatsApp Me About Its Products
                       and Offers. I acknowledge that the project I am enquiring about has not yet
                       received RERA clearance. This Consent Overrides Any Registration For DNC/NDNC.
                     </span>
@@ -420,6 +440,7 @@ function Hero() {
                 <a href="/EnquiryPopup">
                   <button
                     type="submit"
+                    onClick={() => setOpen(true)}
                     data-id="Pre-Register Mobile"
                     className="custom-btn data-id-btn non-rera"
                   >
@@ -431,6 +452,12 @@ function Hero() {
               </form>
             </div>
           </div>
+
+
+
+
+
+
 
           {/* Highlight section */}
           <section className="sec2" id="highlights">
@@ -504,6 +531,7 @@ function Hero() {
                     </p>
                     <button
                       type="button"
+                      onClick={() => setOpen(true)}
                       className="custom-btn data-id-btn on-rera"
                       data-bs-target="#enquire-modal"
                       data-bs-toggle="modal"
@@ -521,6 +549,7 @@ function Hero() {
                     </button>
                     <button
                       type="button"
+                      onClick={() => setOpen(true)}
                       className="custom-btn data-id-btn non-rera"
                       data-bs-target="#enquire-modal"
                       data-bs-toggle="modal"
@@ -543,6 +572,75 @@ function Hero() {
               </div>
             </div>
           </section>
+
+
+
+          {/* Project Video Section */}
+          <section
+            style={{
+              padding: "60px 0",
+              background: "#fff",
+              textAlign: "center",
+            }}
+          >
+            <div className="container">
+
+              {/* Download Brochure Button */}
+              <button
+                onClick={() => setOpen(true)}
+                className="btn"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "8px",
+                  background: "transparent",
+                  border: "2px solid #b8860b",
+                  color: "#b8860b",
+                  padding: "10px 22px",
+                  borderRadius: "40px",
+                  fontWeight: 600,
+                  cursor: "pointer",
+                  marginBottom: "20px",
+                }}
+              >
+                
+                Request for Download Brochure
+              </button>
+
+              {/* Heading */}
+              <h2
+                style={{
+                  fontSize: "28px",
+                  fontWeight: 700,
+                  marginBottom: "25px",
+                  color: "#b8860b",
+                }}
+              >
+                Project Video
+              </h2>
+
+              {/* Video Box */}
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                controls
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  display: "block",
+                }}
+              >
+                <source src="/Video/showstopper.mp4" type="video/mp4" />
+                Your browser does not support HTML5 video.
+              </video>
+
+            </div>
+          </section>
+
+
+
 
           {/* Pricing section */}
           <section className="sec1" id="pricing">
@@ -596,7 +694,7 @@ function Hero() {
                               data-bs-target="#enquire-modal"
                               data-bs-toggle="modal"
                             >
-                              <span className="enquireNowBtn">Complete Costing Details</span>
+                              <span className="enquireNowBtn" onClick={() => setOpen(true)} >Complete Costing Details</span>
                             </a>
                           </td>
                         </tr>
@@ -636,7 +734,7 @@ function Hero() {
                     />
                     <figcaption className="unit-overlay">
                       <h3 className="unit-title">REQUEST MASTER PLAN LAYOUT</h3>
-                      <span className="hover-btn">ENQUIRE NOW</span>
+                      <span className="hover-btn" onClick={() => setOpen(true)} >ENQUIRE NOW</span>
                     </figcaption>
                   </figure>
                   <div className="btn_box text-center">
@@ -648,7 +746,7 @@ function Hero() {
                       data-bs-whatever="Enquire Now"
                       data-id="Master Layout Plan"
                     >
-                      <span className="enquireNowBtn">Request Master Layout Plan</span>
+                      <span className="enquireNowBtn" onClick={() => setOpen(true)} >Request Master Layout Plan</span>
                     </a>
                     <a
                       href="#"
@@ -658,7 +756,7 @@ function Hero() {
                       data-bs-whatever="Enquire Now"
                       data-id="Master Layout Plan"
                     >
-                      <span className="enquireNowBtn">Express Your Interest</span>
+                      <span className="enquireNowBtn" onClick={() => setOpen(true)} >Express Your Interest</span>
                     </a>
                   </div>
                 </div>
@@ -686,7 +784,7 @@ function Hero() {
                     />
                     <figcaption className="unit-overlay">
                       <h3 className="unit-title">REQUEST UNIT PLAN LAYOUT</h3>
-                      <span className="hover-btn">ENQUIRE NOW</span>
+                      <span className="hover-btn" onClick={() => setOpen(true)} >ENQUIRE NOW</span>
                     </figcaption>
                   </figure>
                   <div className="btn_box text-center">
@@ -698,7 +796,7 @@ function Hero() {
                       data-bs-whatever="Enquire Now"
                       data-id="Unit Layout Plan"
                     >
-                      <span className="enquireNowBtn">Request Unit Layout Plans</span>
+                      <span className="enquireNowBtn" onClick={() => setOpen(true)} >Request Unit Layout Plans</span>
                     </a>
                     <a
                       href="#"
@@ -708,7 +806,7 @@ function Hero() {
                       data-bs-whatever="Enquire Now"
                       data-id="Unit Layout Plan"
                     >
-                      <span className="enquireNowBtn">Express Your Interest</span>
+                      <span className="enquireNowBtn" onClick={() => setOpen(true)}>Express Your Interest</span>
                     </a>
                   </div>
                 </div>
@@ -737,7 +835,26 @@ function Hero() {
               </div>
             </div>
           </section>
-
+          {/* Amenities section */}
+          {/* <section style={sectionStyle}>
+            <div style={carouselContainerStyle}>
+              <div style={leftArrowStyle} onClick={scrollLeft}>&#8592;</div>
+              <div style={rightArrowStyle} onClick={scrollRight}>&#8594;</div>
+              <div style={carouselWrapperStyle} ref={carouselRef}>
+                {rows.map((row, rowIndex) => (
+                  <div style={rowStyle} key={rowIndex}>
+                    {row.map((amenity, index) => (
+                      <div style={cardStyle} key={index}>
+                        <img src={`/Images/${amenity.img}`} alt={amenity.label} style={imgStyle} />
+                        <div style={labelLeftStyle}>{amenity.label}</div>
+                        <div style={labelRightStyle}>Artistic Impression</div>
+                      </div>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section> */}
 
           {/* Gallery section */}
 
@@ -817,220 +934,325 @@ function Hero() {
             </div>
           </section>
 
-          {/* Connectivity section */}
-          <section className="sec1" id="connectivity">
+
+
+
+
+          {/* Connectivity Section */}
+          <section
+            className="sec1"
+            id="connectivity"
+            style={{ padding: "60px 0", background: "#fff" }}
+          >
             <div className="container">
-              <h1 className="section-title">
-                Satyam Codename Showstopper - Location Advantage
+
+              {/* Section Title */}
+              <h1
+                className="section-title text-center mb-4"
+                style={{
+                  fontSize: "28px",
+                  fontWeight: 700,
+                  textAlign: "center",
+                  marginBottom: "25px",
+                  color: "#222",
+                }}
+              >
+                Satyam Codename Showstopper – Location Advantage
               </h1>
-              <div className="row mt-2">
+
+              {/* Map */}
+              <div className="row mt-3">
                 <div className="col-xl-12">
-                  <img
-                    title="Google map"
-                    src="/Images/Screenshot_9-12-2025_131720_localhost.jpeg"
-                    alt="Google Map"
-                    width="100%"
-                    height="300"
+                  <div
                     style={{
-                      border: '1px solid #333',
-                      padding: '2px',
-                      background: '#fff',
-                      objectFit: 'cover',
+                      border: "1px solid #ccc",
+                      borderRadius: "12px",
+                      overflow: "hidden",
+                      boxShadow: "0 4px 14px rgba(0,0,0,0.15)",
+                    }}
+                  >
+                    <img
+                      src="/Screenshot 2025-12-10 114316.png"  // <-- Add your map image here
+                      alt="Project Location Map"
+                      style={{
+                        width: "100%",
+                        height: "350px",
+                        objectFit: "cover",
+                        display: "block",
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
+
+
+              {/* Tabs */}
+              <div className="row pt-4 mb-3">
+                <div className="col-xl-12 col-lg-12 amenities-info mt-3">
+
+                  {/* Pills */}
+                  <nav
+                    className="nav nav-pills gap-2 justify-content-center mb-3"
+                    style={{ display: "flex", justifyContent: "center", gap: "10px" }}
+                  >
+                    {[
+                      { id: "connectivity0", img: "Connectivity.gif", label: "Connectivity" },
+                      { id: "educationhub1", img: "Education.gif", label: "Education Hub" },
+                      { id: "healthcare2", img: "Healthcare.gif", label: "Healthcare" },
+                      { id: "mallshotelsshopping3", img: "Mall.gif", label: "Malls" },
+                    ].map((tab, index) => (
+                      <a
+                        key={index}
+                        data-bs-toggle="pill"
+                        href={`#${tab.id}`}
+                        className={`nav-link d-flex align-items-center ${index === 0 ? "active" : ""}`}
+                        style={{
+                          background: index === 0 ? "linear-gradient(90deg, #000000, #333333)" : "#fff", // BLACK GRADIENT
+                          color: index === 0 ? "#fff" : "#333",
+                          borderRadius: "30px",
+                          padding: "8px 18px",
+                          boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
+                          fontWeight: 600,
+                          border: index === 0 ? "none" : "1px solid #ddd",
+                          display: "flex",
+                          alignItems: "center",
+                        }}
+                      >
+
+                        <img
+                          src={`/Images/${tab.img}`}
+                          width="32"
+                          alt={tab.label}
+                          style={{ marginRight: "10px" }}
+                        />
+                        <span>{tab.label}</span>
+                      </a>
+                    ))}
+                  </nav>
+
+                  {/* Tab Content */}
+                  <div className="tab-content mt-3" style={{ fontSize: "15px", lineHeight: "24px", color: "#222" }}>
+
+                    {/* Connectivity */}
+                    <div className="tab-pane fade show active" id="connectivity0">
+                      <ul style={{ paddingLeft: "18px" }}>
+                        <li>Mumbai-Pune Expressway - 10 Mins</li>
+                        <li>Metro Rail - 3 Mins</li>
+                        <li>Navi Mumbai International Airport - 15 Mins</li>
+                        <li>Kharghar-Turbhe Link Road (KTLR) - 2 Mins</li>
+                        <li>Mumbai Trans Harbour Link (MTHL) - 25 Mins</li>
+                        <li>Kharghar Railway Station - 10 Mins</li>
+                      </ul>
+                    </div>
+
+                    {/* Education */}
+                    <div className="tab-pane fade" id="educationhub1">
+                      <ul style={{ paddingLeft: "18px" }}>
+                        <li>NMIMS – 10 mins</li>
+                        <li>B.D. Somani International School – 12 mins</li>
+                        <li>Vibgyor High School – 15 mins</li>
+                        <li>DAV International School – 15 mins</li>
+                        <li>Vishwajyot International School – 15 mins</li>
+                        <li>Apeejay School – 16 mins</li>
+                      </ul>
+                    </div>
+
+                    {/* Healthcare */}
+                    <div className="tab-pane fade" id="healthcare2">
+                      <ul style={{ paddingLeft: "18px" }}>
+                        <li>Sri Sathya Sai Hospital – 8 mins</li>
+                        <li>TATA Hospital – 15 mins</li>
+                        <li>Navjeevan Hospital – 16 mins</li>
+                        <li>Motherhood Hospital – 20 mins</li>
+                      </ul>
+                    </div>
+
+                    {/* Malls */}
+                    <div className="tab-pane fade" id="mallshotelsshopping3">
+                      <ul style={{ paddingLeft: "18px" }}>
+                        <li>DMart – 16 mins</li>
+                        <li>Little World Mall – 20 mins</li>
+                        <li>Seawoods Grand Central Mall – 20 mins</li>
+                        <li>Orion Mall Panvel – 25 mins</li>
+                        <li>Inorbit Mall – 30 mins</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  {/* Buttons */}
+                  <div
+                    className="text-center mt-4"
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      gap: "14px",
+                      flexWrap: "wrap",
+                    }}
+                  >
+                    <button
+                      type="button"
+                      onClick={() => setOpen(true)}
+                      className="btn"
+                      data-bs-target="#enquire-modal"
+                      data-bs-toggle="modal"
+                      data-id="Amenities"
+                      style={{
+                        background: "linear-gradient(90deg, #000000, #333333)", // BLACK GRADIENT
+                        color: "#fff",
+                        padding: "12px 26px",
+                        borderRadius: "40px",
+                        border: "none",
+                        fontWeight: 600,
+                        boxShadow: "0 4px 10px rgba(0,0,0,0.35)",
+                      }}
+                    >
+                      Request Location Details
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => setOpen(true)}
+                      className="btn"
+                      data-bs-target="#enquire-modal"
+                      data-bs-toggle="modal"
+                      data-id="Amenities"
+                      style={{
+                        background: "linear-gradient(90deg, #000000, #333333)", // BLACK GRADIENT
+                        color: "#fff",
+                        padding: "12px 26px",
+                        borderRadius: "40px",
+                        border: "none",
+                        fontWeight: 600,
+                        boxShadow: "0 4px 10px rgba(0,0,0,0.35)",
+                      }}
+                    >
+                      Express Your Interest
+                    </button>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Contact Section */}
+          <section
+            id="contact"
+            style={{ padding: "60px 0", background: "#fafafa" }}
+          >
+            <div className="container">
+
+              <div className="row align-items-center">
+
+                {/* Image */}
+                <div className="col-lg-6 mb-4 mb-lg-0">
+                  <img
+                    src="/Images/site_visit.webp"
+                    className="img-fluid"
+                    alt="Site Visit"
+                    style={{
+                      borderRadius: "12px",
+                      boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
                     }}
                   />
                 </div>
-              </div>
 
-              <div className="row pt-30 mb-3">
-                <div className="col-xl-12 col-lg-12 col-sm-12 text-dark amenities-info mt-3 ps-2 pe-2">
-                  <div id="exTab1" className="fuild-container">
-                    <nav className="nav nav-pills">
-                      {[
-                        { id: 'connectivity0', img: 'Connectivity.gif', label: 'Connectivity' },
-                        { id: 'educationhub1', img: 'Education.gif', label: 'Education Hub' },
-                        { id: 'healthcare2', img: 'Healthcare.gif', label: 'Healthcare' },
-                        { id: 'mallshotelsshopping3', img: 'Mall.gif', label: 'Malls' },
-                      ].map((tab, index) => (
-                        <a
-                          key={index}
-                          className={`nav-link d-flex align-items-center ${index === 0 ? 'active show' : ''
-                            }`}
-                          data-bs-toggle="pill"
-                          href={`#${tab.id}`}
-                        >
-                          <img
-                            src={`/Images/${tab.img}`}
-                            width="36"
-                            className="img-fluid mb-2 me-2"
-                            alt={tab.label}
-                          />
-                          <h6 className="subtitle inventory">{tab.label}</h6>
-                        </a>
-                      ))}
-                    </nav>
-                    <div className="tab-content clearfix">
-                      <div className="tab-pane fade active show" id="connectivity0">
-                        <ul>
-                          <li>Mumbai-Pune Expressway - 10 Mins</li>
-                          <li>Metro Rail - 3 Mins</li>
-                          <li>Navi Mumbai International Airport 15 Mins</li>
-                          <li>Kharghar-Turbhe Link Road (KTLR) 2 Mins</li>
-                          <li>Mumbai Trans Harbour Link (MTHL) 25 Mins</li>
-                          <li>Kharghar Railway Station - 10 Mins</li>
-                        </ul>
+                {/* Form */}
+                <div className="col-lg-6">
+                  <div
+                    className="form"
+                    style={{
+                      padding: "25px",
+                      background: "#fff",
+                      borderRadius: "12px",
+                      boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+                    }}
+                  >
+                    <h3
+                      className="section-title mb-3"
+                      style={{
+                        fontSize: "24px",
+                        fontWeight: 700,
+                        marginBottom: "20px",
+                      }}
+                    >
+                      Schedule a Site Visit
+                    </h3>
+
+                    <form
+                      name="schedule-site"
+                      onSubmit={(e) => handleSubmit(e, "Schedule Site Visit")}
+                    >
+                      <input type="hidden" name="iso_code" />
+                      <input type="hidden" name="mobileExt" />
+
+                      <div className="mb-3">
+                        <input
+                          type="text"
+                          name="name"
+                          className="form-control"
+                          required
+                          placeholder="Name*"
+                          style={{
+                            height: "45px",
+                            borderRadius: "6px",
+                            border: "1px solid #ccc",
+                            paddingLeft: "12px",
+                          }}
+                        />
                       </div>
-                      <div className="tab-pane fade" id="educationhub1">
-                        <ul>
-                          <li>NMIMS – 10 mins</li>
-                          <li>B.D. Somani International School – 12 mins</li>
-                          <li>Vibgyor High School – 15 mins</li>
-                          <li>DAV International School – 15 mins</li>
-                          <li>Vishwajyot International School – 15 mins</li>
-                          <li>Apeejay School – 16 mins</li>
-                        </ul>
+
+                      <div className="mb-3">
+                        <input
+                          type="tel"
+                          name="mobile"
+                          className="form-control"
+                          required
+                          placeholder="Mobile*"
+                          style={{
+                            height: "45px",
+                            borderRadius: "6px",
+                            border: "1px solid #ccc",
+                            paddingLeft: "12px",
+                          }}
+                        />
                       </div>
-                      <div className="tab-pane fade" id="healthcare2">
-                        <ul>
-                          <li>Sri Sathya Sai Hospital – 8 mins</li>
-                          <li>TATA Hospital – 15 mins</li>
-                          <li>Navjeevan Hospital – 16 mins</li>
-                          <li>Motherhood Hospital – 20 mins</li>
-                        </ul>
+
+                      <div className="mb-3" style={{ fontSize: "12px" }}>
+                        <label style={{ display: "flex", alignItems: "center" }}>
+                          <input type="checkbox" defaultChecked style={{ marginRight: "8px" }} />
+                          I consent to data processing as per{" "}
+                          <a href="/PrivacyPolicy" target="_blank" style={{ color: "#007bff", marginLeft: "4px" }}>
+                            Privacy Policy | Terms
+                          </a>
+                        </label>
                       </div>
-                      <div className="tab-pane fade" id="mallshotelsshopping3">
-                        <ul>
-                          <li>DMart – 16 mins</li>
-                          <li>Little World Mall – 20 mins</li>
-                          <li>Seawoods Grand Central Mall – 20 mins</li>
-                          <li>Orion Mall Panvel – 25 mins</li>
-                          <li>Inorbit Mall – 30 mins</li>
-                        </ul>
-                      </div>
-                    </div>
+
+                      <button
+                        type="submit"
+                        className="btn w-100"
+                        style={{
+                          background: "linear-gradient(90deg, #000000, #333333)", // BLACK GRADIENT
+                          color: "#fff",
+                          padding: "12px",
+                          borderRadius: "40px",
+                          border: "none",
+                          fontWeight: 600,
+                          marginTop: "8px",
+                          boxShadow: "0 4px 12px rgba(0,0,0,0.25)",
+                        }}
+                      >
+                        Submit
+                      </button>
+
+                    </form>
                   </div>
                 </div>
-                <div className="text-center mt-3">
-                  <button
-                    type="button"
-                    className="btn custom-btn data-id-btn on-rera"
-                    data-bs-target="#enquire-modal"
-                    data-bs-toggle="modal"
-                    data-bs-whatever="Enquire Now"
-                    data-id="Amenities"
-                  >
-                    <span className="enquireNowBtn">Request Location Details</span>
-                  </button>
-                  <button
-                    type="button"
-                    className="btn custom-btn data-id-btn non-rera"
-                    data-bs-target="#enquire-modal"
-                    data-bs-toggle="modal"
-                    data-bs-whatever="Enquire Now"
-                    data-id="Amenities"
-                  >
-                    <span className="enquireNowBtn">Express Your Interest</span>
-                  </button>
-                </div>
+
               </div>
             </div>
           </section>
 
-          {/* Contact section */}
-          <section id="contact">
-            <div className="container">
-              <div className="contact-inner">
-                <div className="container contact-data">
-                  <div className="row">
-                    <div className="col-lx-6 col-lg-6 col-sm-12 image-carousel1 ps-0 pe-0">
-                      <img
-                        src="/Images/site_visit.webp"
-                        className="img-fluid"
-                        alt="Site Visit"
-                      />
-                    </div>
-
-                    {/* LEFT FORM */}
-                    <div className="col-lx-6 col-lg-6 col-sm-12 form-data">
-                      <div className="form">
-                        <h3 className="section-title">Schedule a Site Visit</h3>
-
-                        <form
-                          className="text-center"
-                          name="schedule-site"
-                          onSubmit={(e) =>
-                            handleSubmit(e, "Schedule Site Visit")
-                          }
-                        >
-                          <input type="hidden" name="iso_code" value="" />
-                          <input type="hidden" name="mobileExt" value="" />
-
-                          <div className="row">
-                            <div className="col-lg-12 forms-input-fields">
-                              <input
-                                type="text"
-                                name="name"
-                                className="form-control"
-                                required
-                                placeholder="Name*"
-                              />
-                            </div>
-
-                            <div className="col-lg-12 forms-input-fields">
-                              <input
-                                type="tel"
-                                name="mobile"
-                                className="form-control phone"
-                                required
-                                placeholder="Mobile*"
-                              />
-                            </div>
-
-                            <div
-                              className="form-group acceptance mb-2"
-                              style={{ fontSize: "10px", marginTop: "10px" }}
-                            >
-                              <label className="form-check-label text-start">
-                                <input
-                                  type="checkbox"
-                                  defaultChecked
-                                  className="form-check-input"
-                                />
-                                <span className="text on-rera">
-                                  I Consent to data processing as per{" "}
-                                  <a
-                                    href="/PrivacyPolicy"
-                                    style={{ color: "#007bff" }}
-                                    target="_blank"
-                                  >
-                                    Privacy Policy | Terms
-                                  </a>
-                                </span>
-                              </label>
-                            </div>
-
-                            <button
-                              type="submit"
-                              className="btn custom-btn text-white"
-                            >
-                              <span className="enquireNowBtn">Submit</span>
-                            </button>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-
-                    <div className="col-lx-6 col-lg-6 col-sm-12 ps-0 pe-0 image-carousel">
-                      <img
-                        src="/Images/site_visit.webp"
-                        className="img-fluid"
-                        alt="Site Visit"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
 
           {/* About Developer */}
           {/* <section className="sec1" id="overview">
@@ -1040,7 +1262,7 @@ function Hero() {
                   <div className="overview-data">
                     <h1>About Globe Pride Realty</h1>
                     <p className="overview-info" style={{ fontSize: '16px' }}>
-                      Associatte PropTech Pvt Ltdprovides an integrated real estate ecosystem that caters to
+                      Globe Pride Realty provides an integrated real estate ecosystem that caters to
                       both businesses and home buyers. As an affiliate, our intelligent
                       business-to-business approach seamlessly integrates stakeholders, while our ZERO
                       cost assurance guarantees that we do not charge anything to our customers of any
@@ -1076,7 +1298,12 @@ function Hero() {
           <footer className="sec3">
             <div className="container on-rera">
               <div className="foot_logo mb-3">
-
+                <img
+                  src="/Images/logo.png"
+                  alt="Project Logo"
+                  className="d-block mx-auto project-logo"
+                  style={{ width: '250px' }}
+                />
               </div>
               <div id="foot_rera_qr" className="pt-2 mb-2"></div>
               <div className="elementor-widget-container text-center">
@@ -1091,26 +1318,9 @@ function Hero() {
                 </p>
               </div>
               <p id="disclaimer">
-                This website is not an official site and it belongs to The affiliate marketing partner, The
-                information provided on this website is intended exclusively for informational purposes and
-                should not be construed as an offer of services. This site is managed by a RERA authorized
-                affiliate partner / real estate agent (for multiple real estate developers) namely Globe
-                Pride Realty. The pricing information presented on this website is subject to alteration
-                without advance notification, and the assurance of property availability cannot be
-                guaranteed. The images showcased on this website are for representational purposes only and
-                may not accurately reflect the actual properties. We may share your data with maharashtra
-                Real Estate Regulatory Authority (RERA) registered Developers for further processing as
-                necessary. Additionally, we may send updates and information to the mobile number or email
-                address registered with us. All rights reserved. The content, design, and information on
-                this website are protected by copyright and other intellectual property rights. Any
-                unauthorized use or reproduction of the content may violate applicable laws. For accurate
-                and up-to-date information regarding services, pricing, availability, and any other details,
-                it is recommended to contact us directly through the provided contact information on this
-                website. I acknowledge that the project I am enquiring about has not yet received RERA
-                clearance. Thank you for visiting our website.
+                <span className="text-black w-5">Disclaimer :</span> This is not the official website of developer & property, it belongs to authorised channel partner for information purpose only. All rights for logo & images are reserved to developer. Thank you for visiting our website. This disclaimer ("Disclaimer") is applicable to this website and all microsites and websites owned by us. By using or accessing this website you agree with the Disclaimer without any qualification or limitation. This website is in the process of being updated. By accessing this website, the viewer confirms that the information including brochures and marketing collaterals on this website are solely for informational purposes only and the viewer has not relied on this information for making any booking/purchase in any project of the company. Nothing on this website, constitutes advertising, marketing, booking, selling or an offer for sale, or invitation to purchase a unit in any project by the company. The company is not liable for any consequence of any action taken by the viewer relying on such material/ information on this website.
               </p>
-              <div className="d-flex justify-content-center gap-3 mt-3">
-
+              <p className="text-center mb-0 pb-3">
                 <a
                   href="/PrivacyPolicy"
                   target="_blank"
@@ -1120,6 +1330,7 @@ function Hero() {
                   Privacy Policy
                 </a>
 
+                &nbsp;&nbsp;
                 <a
                   href="/TermsConditions"
                   target="_blank"
@@ -1128,7 +1339,7 @@ function Hero() {
                 >
                   Terms & Conditions
                 </a>
-
+                &nbsp;&nbsp;
                 <a
                   href="/CookiePolicy"
                   target="_blank"
@@ -1137,19 +1348,17 @@ function Hero() {
                 >
                   Cookie Policy
                 </a>
-
-              </div>
-
+              </p>
             </div>
             <div className="container non-rera">
-              {/* <div className="foot_logo mb-3">
+              <div className="foot_logo mb-3">
                 <img
-                  src="/Images/logo.png"
+                  src="./public/Images/logo.png"
                   alt="Project Logo"
                   className="d-block mx-auto project-logo"
                   style={{ width: '250px' }}
                 />
-              </div> */}
+              </div>
               <p id="disclaimer">
                 The content on this website is for informational purposes only and is not intended as an
                 offer for services or sale. The project mentioned has not yet received RERA clearance but is
@@ -1174,19 +1383,38 @@ function Hero() {
                   Read More <i className="fa fa-chevron-down"></i>
                 </span>
               </p>
-              <p className="text-center mb-0 pb-2">
+              <p className="text-center mb-0 pb-2 d-flex justify-content-center gap-3">
                 <a
-                  href="Privacy-Policy.html"
+                  href="/PrivacyPolicy"
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ textAlign: 'center', textDecoration: 'none' }}
+                  className="text-decoration-none"
                 >
-                  Privacy Policy | Terms & Conditions
+                  Privacy Policy
                 </a>
+                <a
+                  href="/TermsConditions"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-decoration-none"
+                >
+                  Terms & Conditions
+                </a>
+                <a
+                  href="/CookiePolicy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-decoration-none"
+                >
+                  Cookie Policy
+                </a>
+
+
               </p>
+
             </div>
           </footer>
- 
+
           <section id="footer-links">
             <div className="container text-center">
               <p>
@@ -1270,6 +1498,7 @@ function Hero() {
         <div className="og-block d-flex justify-content-between">
           <button className="btn data-id-btn">
             <img
+              onClick={() => setOpen(true)}
               src="/Images/Calendar.gif"
               className="img-fluid icon_sz"
               alt="Calendar"
@@ -1340,9 +1569,28 @@ function Hero() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Privacy Policy | Terms & Conditions
+                    Privacy Policy
                   </a>
-                  , I Authorize Associatte PropTech Pvt Ltd and its representatives to Call,
+                  &nbsp; &nbsp;
+                  <a
+                    href="/TermsConditions"
+                    style={{ color: "#007bff" }}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Terms & Conditions
+                  </a>
+
+                  &nbsp; &nbsp;
+                  <a
+                    href="/CookiePolicy"
+                    style={{ color: "#007bff" }}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Cookie Policy
+                  </a>
+                  , I Authorize Globe Pride Realty and its representatives to Call,
                   SMS, Email or WhatsApp Me About Its Products and Offers. I
                   acknowledge that the project I am enquiring about has not yet
                   received RERA clearance. This Consent Overrides Any Registration
@@ -1357,12 +1605,28 @@ function Hero() {
                   gather information. By providing my data, I consent to its use in
                   accordance with the{" "}
                   <a
-                    href="Privacy-Policy.html"
+                    href="/PrivacyPolicy"
                     style={{ color: "#007bff" }}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Privacy Policy | Terms & Conditions
+                    Privacy Policy
+                  </a>
+                  <a
+                    href="/TermsConditions"
+                    style={{ color: "#007bff" }}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Terms & Conditions | Cookie Policy
+                  </a>
+                  <a
+                    href="/CookiePolicy"
+                    style={{ color: "#007bff" }}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Cookie Policy
                   </a>
                   .
                 </span>
@@ -1427,7 +1691,7 @@ function Hero() {
             data-bs-whatever="Enquire Now"
             data-id="Call Back"
           >
-            <span className="enquireNowBtn">Request Call Back</span>
+            <span className="enquireNowBtn" onClick={() => setOpen(true)} >Request Call Back</span>
           </button>
         </div>
 

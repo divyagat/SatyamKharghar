@@ -3,13 +3,13 @@ function Footer() {
         <>
             {/* Footer */}
             {/* <div className="main-container d-flex">      */}
-            <main className="left-section">
+            {/* <main className="left-section"> */}
                 {/* <div className="page-wrapper">   */}
                 <footer className="sec3">
                     <div className="container on-rera">
                         <div className="foot_logo mb-3">
                             <img
-                                src="./public/Images/logo.png"
+                                src="/Images/logo.png"
                                 alt="Project Logo"
                                 className="d-block mx-auto project-logo"
                                 style={{ width: '250px' }}
@@ -20,7 +20,7 @@ function Footer() {
                             <p>
                                 This project is RERA registered.&nbsp; <br />
                                 <a style={{ textDecoration: 'none', color: '#000', fontSize: '12px' }}>
-                                    <span>Agent Rera Number : A52000013825</span>
+                                    <span>Agent Rera Number : A52100029540</span>
                                     <br />
                                     <span>Project Rera Number : Coming Soon!</span>
                                     <br />
@@ -55,20 +55,31 @@ function Footer() {
                             >
                                 Privacy Policy
                             </a>
+
+                            &nbsp;&nbsp;
                              <a
-                                href="/TermsAndCondition"
+                                href="/TermsConditions"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-decoration-none"
                             >
                                 Terms & Conditions
                             </a>
+                            &nbsp;&nbsp;
+                              <a
+                                href="/CookiePolicy"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-decoration-none"
+                            >
+                                Cookie Policy
+                            </a>
                         </p>
                     </div>
                     <div className="container non-rera">
                         <div className="foot_logo mb-3">
                             <img
-                                src="./public/Images/logo.png"
+                                src="/Images/logo.png"
                                 alt="Project Logo"
                                 className="d-block mx-auto project-logo"
                                 style={{ width: '250px' }}
@@ -99,8 +110,7 @@ function Footer() {
                             </span>
                         </p>
                         <p className="text-center mb-0 pb-2 d-flex justify-content-center gap-3">
-
-                            <a
+<a
                                 href="/PrivacyPolicy"
                                 target="_blank"
                                 rel="noopener noreferrer"
@@ -108,31 +118,30 @@ function Footer() {
                             >
                                 Privacy Policy
                             </a>
-
-                            <a
-                                href="/TermsAndCondition"
+                             <a
+                                href="/TermsConditions"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-decoration-none"
                             >
                                 Terms & Conditions
                             </a>
-
-                            <a
-                                href="Cookie-Policy.html"
+                              <a
+                                href="/CookiePolicy"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-decoration-none"
                             >
                                 Cookie Policy
                             </a>
+  
 
                         </p>
 
                     </div>
                 </footer>
                 {/* </div> */}
-            </main>
+            {/* </main> */}
             {/* </div> */}
         </>
     );

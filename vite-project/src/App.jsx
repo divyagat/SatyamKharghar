@@ -12,6 +12,7 @@ import PrivacyPolicyPage from "./pages/PrivacyPolicy";
 import TermsAndConditions from "./pages/TermsAndCondition";
 import GallerySection from "./pages/GallerySection";
 import MapSection from "./pages/MapSection";
+import CookiePolicy from "./pages/CookiePolicy";
 function App() {
   return (
     <>
@@ -23,6 +24,7 @@ function App() {
         <Route path="/PrivacyPolicy" element={<PrivacyPolicyPage />} />
         <Route path="/TermsConditions" element={<TermsAndConditions />} />
         <Route path="/GallerySection" element={<GallerySection/>}/>
+          <Route path="/CookiePolicy" element={<CookiePolicy />} />
         <Route path="/MapSection" element={<MapSection/>}/>     
 
         
