@@ -1,35 +1,64 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 function Header() {
+  useEffect(() => {
+    const nav = document.getElementById("navbarNav");
+    const toggler = document.querySelector(".navbar-toggler");
+
+    const handleOutsideClick = (event) => {
+      if (
+        nav &&
+        toggler &&
+        !nav.contains(event.target) &&
+        !toggler.contains(event.target)
+      ) {
+        nav.classList.remove("show");
+      }
+    };
+
+    const links = document.querySelectorAll(".nav-link");
+    links.forEach((link) =>
+      link.addEventListener("click", () => {
+        if (nav) nav.classList.remove("show");
+      })
+    );
+
+    document.addEventListener("click", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  }, []);
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light fixed-top">
       <div className="container-fluid">
 
-        {/* Logo */}
-        <a className="navbar-brand" href="#home">
+        {/* LEFT SIDE: LOGO */}
+        <a href="#home" className="navbar-brand d-flex align-items-center">
           <img
-            src="./Images/logo.png"
-            alt="Project Logo"
-            className="img-fluid d-block mx-auto project-logo"
-            style={{ width: "250px", maxWidth: "250px" }}
+            src="/logo (3).png"     // 🔁 replace with your logo path
+            alt="Logo"
+            className="navbar-logo"
           />
         </a>
 
-        {/* Toggle Button */}
-        <div className="d-flex">
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-        </div>
+        {/* TOGGLE BUTTON */}
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
 
-        {/* Menu */}
-        <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
+        {/* MENU */}
+        <div
+          className="collapse navbar-collapse justify-content-end"
+          id="navbarNav"
+        >
           <ul className="navbar-nav align-items-center responsive-nav">
 
             <li className="nav-item">
@@ -73,27 +102,26 @@ function Header() {
                 <i className="far fa-map mr-2"></i> Location
               </a>
             </li>
-            {/* 
-            <li className="nav-item on-rera">
-              <a className="nav-link brand-logo">
-                <img
-                  src="/Images/Authorised AFFILIATE PARTNER.png"
-                  alt="Affiliate Partner"
-                  className="img-fluid"
-                />
-              </a>
-            </li> */}
 
           </ul>
         </div>
       </div>
 
-      {/* Component-level CSS */}
+      {/* CSS */}
       <style>{`
+        .navbar-logo {
+          height: 48px;
+          width: auto;
+        }
+
         .responsive-nav {
           font-size: 16px;
         }
+
         @media (max-width: 767px) {
+          .navbar-logo {
+            height: 40px;
+          }
           .responsive-nav {
             font-size: 14px;
             align-items: flex-start;

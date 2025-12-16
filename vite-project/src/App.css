@@ -66,7 +66,8 @@ section {border:transparent;}
 .mx-auto {margin:auto;}
 .banner-col {color:#c0840d; font:600; text-transform:uppercase; font-size:20px; font-weight:800;}
 .nav-link.brand-logo img { width:100px;}
-#home .project-details .price {font-size:20px; font-weight:600; text-transform:capitalize;}
+#home .
+ .price {font-size:20px; font-weight:600; text-transform:capitalize;}
 .price-text {font-size:26px; margin:0px 0px 8px 0px; text-align:center;}
 .price-sub-text {font-weight:700; font-size:26px; letter-spacing:1.5px;}
 .navbar-toggler-icon {color:dark;}
@@ -333,7 +334,79 @@ input[type=number]::-webkit-outer-spin-button, input[type=number]::-webkit-inner
 } 
 
 
- 
+ /* MOBILE FIRST → card below carousel */
+.info-card {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  margin: 20px auto;
+  background: #fff;
+  padding: 22px;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  z-index: 10;
+}
+
+/* Titles, boxes, etc — SAME */
+.new-launch-tag {
+  background: black;
+  color: #fff;
+  padding: 6px 18px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 14px;
+  width: fit-content;
+  margin: 0 auto 14px;
+}
+.title {
+  text-align: center;
+  font-weight: 700;
+  font-size: 22px;
+  margin-bottom: 6px;
+}
+.subtitle, .developer {
+  text-align: center;
+}
+.grey-box {
+  background: #f1f1f1;
+  padding: 14px 18px;
+  border-radius: 10px;
+  margin-bottom: 14px;
+}
+.row-line {
+  display: flex;
+  justify-content: space-between;
+}
+.eoi-box {
+  border: 2px dashed #3A1F78;
+  background: #EFEAFB;
+  padding: 14px;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 14px;
+}
+.price-display {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  align-items: baseline;
+}
+.rs,
+.price {
+  color: #3A1F78;
+}
+
+/* DESKTOP (LG 992px+) → card overlay on left */
+@media (min-width: 992px) {
+  .info-card {
+    position: absolute;
+    top: 50%;
+    left: 3%;
+    transform: translateY(-50%);
+    margin: 0;
+  }
+}
+
 
 .custom-btn:hover {background:var(--button-hover-color); color:var(--button-text-hover-color); box-shadow:4px 4px 12px 0 rgba(0, 0, 0, 0.26);}
 .sec-price .table {max-width:70rem; margin-inline:auto; border-radius:1.5rem; overflow:hidden; outline:1px solid var(--Primary-color); margin-top:2rem;}

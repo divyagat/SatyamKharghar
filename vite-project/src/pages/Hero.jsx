@@ -21,7 +21,7 @@ function Hero() {
     console.log("📥 Form Submit:", data);
 
     try {
-      const res = await fetch("https://satyam-kharghar.vercel.app/send-crm", {
+      const res = await fetch("https://satyam-kharghar-fcf4.vercel.app/send-crm", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -109,186 +109,15 @@ function Hero() {
       <main className="left-section">
         <div className="page-wrapper">
           {/* Top Section */}
-          <section id="home" style={{ position: "relative" }}>
-            <div className="container-fluid" style={{ position: "relative" }}>
+          <section id="home" className="position-relative">
 
-              {/* LEFT OVERLAY INFO CARD */}
-              <div
-                style={{
-                  position: "absolute",
-                  top: "50%",
-                  left: "3%",
-                  transform: "translateY(-50%)",
-                  zIndex: 20,
-                  width: "100%",
-                  maxWidth: "360px",
-                  background: "#ffffff",
-                  borderRadius: "16px",
-                  padding: "20px 22px",
-                  boxShadow: "0 8px 25px rgba(0,0,0,0.20)",
-                }}
-              >
-                {/* NEW LAUNCH TAG */}
-                <div
-                  style={{
-                    background: "Black",
-                    color: "#fff",
-                    padding: "6px 18px",
-                    width: "fit-content",
-                    borderRadius: "12px",
-                    margin: "0 auto 14px",
-                    fontWeight: 700,
-                    fontSize: "14px",
-                  }}
-                >
-                  NEW LAUNCH
-                </div>
+            <div className="container-fluid p-0 position-relative">
 
-                {/* TITLE */}
-                <h1
-                  style={{
-                    textAlign: "center",
-                    fontWeight: 700,
-                    fontSize: "24px",
-                    lineHeight: "28px",
-                    textTransform: "uppercase",
-                    marginBottom: "6px",
-                    background: "linear-gradient(90deg, #2C1363, #3A1F78)", // Dark Blue-Purple Gradient
-                    WebkitBackgroundClip: "text",
-                    color: "black",
-                    text: "Black",
-                  }}
-                >
-                  SATYAM CODENAME SHOWSTOPPER
-                </h1>
-
-                <h3
-                  style={{
-                    textAlign: "center",
-                    fontSize: "16px",
-                    fontWeight: 500,
-                    margin: "0 0 5px",
-                  }}
-                >
-                  At Kharghar
-                </h3>
-
-                <p
-                  style={{
-                    textAlign: "center",
-                    fontSize: "14px",
-                    color: "#444",
-                    marginBottom: "16px",
-                  }}
-                >
-                  By Satyam Developers
-                </p>
-
-                {/* GREY BOX */}
-                <div
-                  style={{
-                    background: "#f1f1f1",
-                    padding: "14px 18px",
-                    borderRadius: "10px",
-                    marginBottom: "16px",
-                  }}
-                >
-                  {[
-                    ["Land Parcel", "3.25 Acre"],
-                    ["Floors", "G+31 Storeys"],
-                    ["Possession", "2027"],
-                  ].map(([label, value], i) => (
-                    <div
-                      key={i}
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        padding: "4px 0",
-                        fontSize: "15px",
-                      }}
-                    >
-                      <span>{label}</span>
-                      <strong>{value}</strong>
-                    </div>
-                  ))}
-                </div>
-
-                {/* BLUE EOI BOX */}
-                <div
-                  style={{
-                    border: "2px dashed #3A1F78",
-                    background: "#EFEAFB",
-                    padding: "14px",
-                    textAlign: "center",
-                    borderRadius: "10px",
-                    marginBottom: "16px",
-                  }}
-                >
-                  <p
-                    style={{
-                      margin: 0,
-                      fontWeight: 700,
-                      color: "Black",
-                      fontSize: "16px",
-                    }}
-                  >
-                    EOI Starts From 2 Lakhs
-                  </p>
-
-                  {/* <p
-                    style={{
-                      margin: "4px 0 0",
-                      fontSize: "15px",
-                      color: "#3A1F78",
-                    }}
-                  >
-                    55 Acres Mixed Use Project
-                  </p> */}
-                </div>
-
-                {/* PRICE */}
-                <p style={{ textAlign: "center", margin: "0 0 6px", fontWeight: 500 }}>
-                  Premium 2, 3 & 4 BHK Homes
-                </p>
-
-                <div style={{ textAlign: "center" }}>
-                  <span style={{ color: "#3A1F78", fontSize: "22px", fontWeight: 700 }}>
-                    ₹
-                  </span>{" "}
-                  <span style={{ color: "#3A1F78", fontSize: "26px", fontWeight: 800 }}>
-                    2.40 Cr*
-                  </span>{" "}
-                  <span style={{ fontSize: "18px" }}>Onwards</span>
-                </div>
-
-                {/* CTA BUTTON */}
-                <div style={{ textAlign: "center", marginTop: "18px" }}>
-                  <button
-                    type="button"
-                    onClick={() => setOpen(true)}
-                    style={{
-                      background: "black",
-                      color: "#fff",
-                      padding: "12px 20px",
-                      borderRadius: 30,
-                      border: "none",
-                      cursor: "pointer",
-                    }}
-                  >
-                    Enquire Now
-                  </button>
-
-
-                </div>
-              </div>
-
-
-              {/* CAROUSEL */}
+              {/* CAROUSEL FIRST ON SMALL SCREENS */}
               <div
                 id="banner-carousel"
-                className="carousel slide d-block"
+                className="carousel slide order-1 order-lg-2"
                 data-bs-ride="carousel"
-                style={{ position: "relative", zIndex: 10 }}
               >
                 <div className="carousel-indicators">
                   <button type="button" data-bs-target="#banner-carousel" data-bs-slide-to="0" className="active"></button>
@@ -300,35 +129,67 @@ function Hero() {
                   <div className="carousel-item active">
                     <img className="d-block w-100" src="https://showstopper-kharghar.site/Raheja/img/webp/slider2.webp" />
                   </div>
-
                   <div className="carousel-item">
                     <img className="d-block w-100" src="https://showstopper-kharghar.site/Raheja/img/webp/slider1.webp" />
                   </div>
-
                   <div className="carousel-item">
                     <img className="d-block w-100" src="https://satyammetrocodenameshowstopper.com/assets/img/banner1.jpg" />
                   </div>
                 </div>
-                <div className="slide-btn">
-                  <button
-                    className="carousel-control-prev"
-                    type="button"
-                    data-bs-target="#banner-carousel"
-                    data-bs-slide="prev"
-                  >
-                    <span className="carousel-control-prev-icon"></span>
-                  </button>
 
-                  <button
-                    className="carousel-control-next"
-                    type="button"
-                    data-bs-target="#banner-carousel"
-                    data-bs-slide="next"
-                  >
-                    <span className="carousel-control-next-icon"></span>
-                  </button>
+                <button className="carousel-control-prev" type="button" data-bs-target="#banner-carousel" data-bs-slide="prev">
+                  <span className="carousel-control-prev-icon"></span>
+                </button>
+                <button className="carousel-control-next" type="button" data-bs-target="#banner-carousel" data-bs-slide="next">
+                  <span className="carousel-control-next-icon"></span>
+                </button>
+              </div>
+
+              {/* INFO CARD – BELOW CAROUSEL ON MOBILE, OVERLAY ON DESKTOP */}
+              <div
+                className="info-card order-2 order-lg-1"
+              >
+                <div className="new-launch-tag">NEW LAUNCH</div>
+
+                <h1 className="title">SATYAM CODENAME SHOWSTOPPER</h1>
+                <h3 className="subtitle">At Kharghar</h3>
+                <p className="developer">By Satyam Developers</p>
+
+                <div className="grey-box">
+                  {[
+                    ["Land Parcel", "3.25 Acre"],
+                    ["Floors", "G+31 Storeys"],
+                    ["Possession", "2027"],
+                  ].map(([label, value], i) => (
+                    <div key={i} className="row-line">
+                      <span>{label}</span>
+                      <strong>{value}</strong>
+                    </div>
+                  ))}
                 </div>
 
+                <div className="eoi-box">
+                  <p className="eoi-title">EOI Starts From 2 Lakhs</p>
+                  {/* <p className="eoi-sub">55 Acres Mixed Use Project</p> */}
+                </div>
+
+                <p className="price-text">Premium 2, 3 & 4 BHK Homes</p>
+
+                <div className="price-display">
+                  <span className="rs">₹</span>
+                  <span className="price">2.40 Cr*</span>
+                  <span className="onwards">Onwards</span>
+                </div>
+
+                <div className="text-center mt-3">
+                  <button
+                    type="button"
+                    onClick={() => setOpen(true)}
+                    className="btn btn-dark px-4 py-2 rounded-pill"
+                  >
+                    Enquire Now
+                  </button>
+                </div>
               </div>
 
             </div>
@@ -603,7 +464,7 @@ function Hero() {
                   marginBottom: "20px",
                 }}
               >
-                
+
                 Request for Download Brochure
               </button>
 
@@ -815,19 +676,158 @@ function Hero() {
           </section>
 
           {/* Amenities section */}
-          <section style={sectionStyle}>
-            <h1 style={titleStyle}>Satyam Codename Showstopper - Luxurious Amenities</h1>
-            <div style={carouselContainerStyle}>
-              <div style={leftArrowStyle} onClick={scrollLeft}>&#8592;</div>
-              <div style={rightArrowStyle} onClick={scrollRight}>&#8594;</div>
-              <div style={carouselWrapperStyle} ref={carouselRef}>
+          <section
+            style={{
+              padding: "clamp(40px, 6vw, 80px) 0",
+              background: "#fafafa",
+            }}
+          >
+            <h1
+              style={{
+                textAlign: "center",
+                fontSize: "clamp(22px, 4vw, 36px)",
+                fontWeight: "700",
+                marginBottom: "clamp(24px, 5vw, 50px)",
+                color: "#222",
+                padding: "0 12px",
+              }}
+            >
+              Satyam Codename Showstopper - Luxurious Amenities
+            </h1>
+
+            <div
+              style={{
+                position: "relative",
+                maxWidth: "1300px",
+                margin: "0 auto",
+                padding: "0 16px",
+              }}
+            >
+              {/* Left Arrow */}
+              <div
+                onClick={scrollLeft}
+                style={{
+                  position: "absolute",
+                  left: "0",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  zIndex: 10,
+                  width: "42px",
+                  height: "42px",
+                  borderRadius: "50%",
+                  background: "#fff",
+                  boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  cursor: "pointer",
+                  fontSize: "20px",
+                  userSelect: "none",
+                }}
+              >
+                &#8592;
+              </div>
+
+              {/* Right Arrow */}
+              <div
+                onClick={scrollRight}
+                style={{
+                  position: "absolute",
+                  right: "0",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  zIndex: 10,
+                  width: "42px",
+                  height: "42px",
+                  borderRadius: "50%",
+                  background: "#fff",
+                  boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  cursor: "pointer",
+                  fontSize: "20px",
+                  userSelect: "none",
+                }}
+              >
+                &#8594;
+              </div>
+
+              {/* Carousel */}
+              <div
+                ref={carouselRef}
+                style={{
+                  overflowX: "auto",
+                  scrollBehavior: "smooth",
+                  display: "flex",
+                  gap: "clamp(16px, 3vw, 30px)",
+                  paddingBottom: "10px",
+                }}
+              >
                 {rows.map((row, rowIndex) => (
-                  <div style={rowStyle} key={rowIndex}>
+                  <div
+                    key={rowIndex}
+                    style={{
+                      display: "flex",
+                      gap: "clamp(16px, 3vw, 30px)",
+                    }}
+                  >
                     {row.map((amenity, index) => (
-                      <div style={cardStyle} key={index}>
-                        <img src={`/Images/${amenity.img}`} alt={amenity.label} style={imgStyle} />
-                        <div style={labelLeftStyle}>{amenity.label}</div>
-                        <div style={labelRightStyle}>Artistic Impression</div>
+                      <div
+                        key={index}
+                        style={{
+                          minWidth: "clamp(220px, 30vw, 300px)",
+                          borderRadius: "16px",
+                          overflow: "hidden",
+                          background: "#fff",
+                          boxShadow: "0 6px 20px rgba(0,0,0,0.15)",
+                          position: "relative",
+                        }}
+                      >
+                        <img
+                          src={`/Images/${amenity.img}`}
+                          alt={amenity.label}
+                          style={{
+                            width: "100%",
+                            height: "clamp(200px, 30vw, 260px)",
+                            objectFit: "cover",
+                            display: "block",
+                          }}
+                        />
+
+                        {/* Left Label */}
+                        <div
+                          style={{
+                            position: "absolute",
+                            bottom: "14px",
+                            left: "14px",
+                            background: "rgba(0,0,0,0.65)",
+                            color: "#fff",
+                            padding: "6px 12px",
+                            borderRadius: "8px",
+                            fontSize: "clamp(12px, 2.5vw, 14px)",
+                            fontWeight: "600",
+                          }}
+                        >
+                          {amenity.label}
+                        </div>
+
+                        {/* Right Label */}
+                        <div
+                          style={{
+                            position: "absolute",
+                            bottom: "14px",
+                            right: "14px",
+                            background: "rgba(255,255,255,0.85)",
+                            color: "#222",
+                            padding: "6px 10px",
+                            borderRadius: "8px",
+                            fontSize: "clamp(10px, 2vw, 12px)",
+                            fontWeight: "500",
+                          }}
+                        >
+                          Artistic Impression
+                        </div>
                       </div>
                     ))}
                   </div>
@@ -835,6 +835,7 @@ function Hero() {
               </div>
             </div>
           </section>
+
           {/* Amenities section */}
           {/* <section style={sectionStyle}>
             <div style={carouselContainerStyle}>
@@ -860,19 +861,24 @@ function Hero() {
 
 
 
-
           <section
-            className="sec2"
             id="gallery"
-            style={{ padding: "60px 0" }}
+            style={{
+              padding: "clamp(40px, 6vw, 70px) 0",
+            }}
           >
-            <div className="container wow fadeInUp">
+            <div
+              style={{
+                maxWidth: "1200px",
+                margin: "0 auto",
+                padding: "0 16px",
+              }}
+            >
               <h1
-                className="section-title"
                 style={{
                   textAlign: "center",
-                  marginBottom: "40px",
-                  fontSize: "38px",
+                  marginBottom: "clamp(24px, 4vw, 48px)",
+                  fontSize: "clamp(24px, 4vw, 38px)",
                   fontWeight: "700",
                   color: "#222",
                 }}
@@ -880,59 +886,55 @@ function Hero() {
                 Project Gallery
               </h1>
 
-              <div className="content-gallery">
-                <div
-                  className="gallery js-gallery"
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-                    gap: "22px",
-                  }}
-                >
-                  {[1, 2, 3, 4].map((n) => (
-                    <div key={n} className="gallery-item">
-                      <div
-                        className="gallery-img-holder js-gallery-popup"
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+                  gap: "clamp(14px, 3vw, 22px)",
+                }}
+              >
+                {[1, 2, 3, 4].map((n) => (
+                  <div key={n}>
+                    <div
+                      style={{
+                        overflow: "hidden",
+                        borderRadius: "14px",
+                        cursor: "pointer",
+                        boxShadow: "0 6px 18px rgba(0,0,0,0.15)",
+                        transition: "transform 0.3s ease",
+                      }}
+                      onMouseEnter={(e) =>
+                        (e.currentTarget.style.transform = "scale(1.03)")
+                      }
+                      onMouseLeave={(e) =>
+                        (e.currentTarget.style.transform = "scale(1)")
+                      }
+                    >
+                      <img
+                        src={`/Images/Gallery${n}.webp`}
+                        alt={`Gallery ${n}`}
+                        loading="lazy"
                         style={{
-                          overflow: "hidden",
-                          borderRadius: "14px",
-                          cursor: "pointer",
-                          boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
-                          transition: "transform 0.3s ease",
+                          width: "100%",
+                          height: "clamp(200px, 30vw, 280px)",
+                          objectFit: "cover",
+                          display: "block",
+                          transition: "transform 0.35s ease",
                         }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.transform = "scale(1.03)";
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.transform = "scale(1)";
-                        }}
-                      >
-                        <img
-                          src={`/Images/Gallery${n}.webp`}
-                          alt={`Gallery ${n}`}
-                          className="gallery-img"
-                          loading="lazy"
-                          style={{
-                            width: "100%",
-                            height: "100%",
-                            objectFit: "cover",
-                            transition: "transform 0.35s ease",
-                            display: "block",
-                          }}
-                          onMouseEnter={(e) => {
-                            e.currentTarget.style.transform = "scale(1.15)";
-                          }}
-                          onMouseLeave={(e) => {
-                            e.currentTarget.style.transform = "scale(1)";
-                          }}
-                        />
-                      </div>
+                        onMouseEnter={(e) =>
+                          (e.currentTarget.style.transform = "scale(1.15)")
+                        }
+                        onMouseLeave={(e) =>
+                          (e.currentTarget.style.transform = "scale(1)")
+                        }
+                      />
                     </div>
-                  ))}
-                </div>
+                  </div>
+                ))}
               </div>
             </div>
           </section>
+
 
 
 
@@ -1283,16 +1285,21 @@ function Hero() {
 
           {/* WhatsApp Button */}
           <a
+            href="https://wa.me/918808118188"   // 🔁 replace with your number
             target="_blank"
-            className="whatsaapBtn d-none d-lg-block on-rera discovery"
-            aria-label="WhatsApp"
-            href="#"
             rel="noopener noreferrer"
+            aria-label="WhatsApp"
+            className="whatsaapBtn d-none d-lg-block on-rera discovery"
           >
             <span>
-              <img src="/Images/whatsappAnim.gif" width="34" alt="WhatsApp" />
+              <img
+                src="/Images/whatsappAnim.gif"
+                width="34"
+                alt="WhatsApp"
+              />
             </span>
           </a>
+
 
           {/* Footer */}
           <footer className="sec3">
@@ -1429,15 +1436,15 @@ function Hero() {
           <section>
             <div className="footer-enquiryBtn d-flex d-sm-none">
               <a
-                className="monCall data-id-btn on-rera"
-                href="tel:+918881188181"
+                className="monCall data-id-btn on-rera bg-dark"
+                href="tel:+918808118188"
               >
                 <img src="/Images/callus.gif" className="img-fluid icon_sz" alt="Call" />
                 <br />
                 Call
               </a>
               <a
-                className="monCall data-id-btn non-rera"
+                className="monCall data-id-btn non-rera bg-dark"
                 data-bs-target="#enquire-modal"
                 data-bs-toggle="modal"
                 data-bs-whatever="Enquire Now"
@@ -1449,7 +1456,7 @@ function Hero() {
               </a>
               <a
                 target="_blank"
-                className="monCall whatsappBtn data-id-btn on-rera discovery_mobile"
+                className="monCall whatsappBtn data-id-btn on-rera discovery_mobile bg-dark"
                 href="#"
                 rel="noopener noreferrer"
               >
@@ -1458,7 +1465,7 @@ function Hero() {
                 WhatsApp
               </a>
               <a
-                className="monCall data-id-btn on-rera"
+                className="monCall data-id-btn on-rera bg-dark"
                 data-bs-target="#enquire-modal"
                 data-bs-toggle="modal"
                 data-bs-whatever="Enquire Now"
@@ -1473,7 +1480,7 @@ function Hero() {
                 Enquire Now
               </a>
               <a
-                className="monCall data-id-btn non-rera"
+                className="monCall data-id-btn non-rera bg-dark"
                 data-bs-target="#enquire-modal"
                 data-bs-toggle="modal"
                 data-bs-whatever="Enquire Now"
@@ -1512,8 +1519,8 @@ function Hero() {
               className="img-fluid icon_sz"
               alt="Call"
             />
-            <a href="tel:+918881188181" style={{ color: "#fff" }}>
-              +91 8881188181
+            <a href="tel:+918808118188" style={{ color: "#fff" }}>
+              +91 8808118188
             </a>
           </button>
         </div>
@@ -1706,7 +1713,3 @@ function Hero() {
 }
 
 export default Hero;
-
-
-
-
