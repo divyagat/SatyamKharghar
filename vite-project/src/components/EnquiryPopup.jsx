@@ -2,9 +2,9 @@
 import React from "react";
 
 const features = [
-  { icon: "/Images/call-back.webp", label: "Instant Call Back" },
-  { icon: "/Images/site-visit.png", label: "Free Site Visit" },
-  { icon: "/Images/best-price.png", label: "Unmatched Price" },
+  { icon: "/call-back (1).webp", label: "Instant Call Back" },
+  { icon: "/site-visit (1).png", label: "Free Site Visit" },
+  { icon: "/best-price (1).png", label: "Unmatched Price" },
 ];
 
 export default function EnquiryPopup({ open, setOpen }) {
