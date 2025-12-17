@@ -1513,16 +1513,28 @@ function Hero() {
             Schedule Visit
           </button>
 
-          <button className="btn on-rera">
+          <button
+            className="btn on-rera"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              paddingLeft: "6px",   // reduce left padding
+            }}
+          >
             <img
               src="/Images/callus.gif"
               className="img-fluid icon_sz"
               alt="Call"
+              style={{
+                marginRight: "-5px", // space between image & text
+                marginLeft: "0",    // remove extra left margin
+              }}
             />
-            <a href="tel:+918808118188" style={{ color: "#fff" }}>
+            <a href="tel:+918808118188" style={{ color: "#fff", textDecoration: "none" }}>
               +91 8808118188
             </a>
           </button>
+
         </div>
 
         <div className="form-section p-3">
